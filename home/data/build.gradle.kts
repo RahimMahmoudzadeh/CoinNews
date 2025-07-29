@@ -1,13 +1,22 @@
 plugins {
-    id("java-library")
-    alias(libs.plugins.jetbrains.kotlin.jvm)
+    libs.plugins.coinNews.run {
+        alias(library)
+        alias(network)
+        alias(koin)
+    }
 }
-java {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
+
+android {
+    namespace = "com.rahim.coinnews.home.data"
 }
-kotlin {
-    compilerOptions {
-        jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11
+dependencies {
+    projects.run {
+//        implementation(core.db)
+//        implementation(home.domain)
+//        implementation(core.network)
+//        implementation(core.utils)
+    }
+    libs.run {
+        implementation(presianDate)
     }
 }
