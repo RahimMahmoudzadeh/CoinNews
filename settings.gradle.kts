@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "CoinNews"
 include(":app")
- 
+include(":home:data")
