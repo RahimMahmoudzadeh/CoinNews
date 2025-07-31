@@ -30,4 +30,4 @@ include(
     ":app",
 )
 include(subprojects("home"))
-include(":home:domain")
+include(subprojects("core"))
