@@ -31,3 +31,4 @@ include(
 )
 include(subprojects("home"))
 include(subprojects("core"))
+include(subprojects("library"))
