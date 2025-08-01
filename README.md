@@ -14,10 +14,10 @@
 ![GitHub forks](https://img.shields.io/github/forks/RahimMahmoudzadeh/CoinNews)
 
 ## 📜 Description
-This repo is a playground about best practices, using updated libraries and solutions in the kotlin Multi Platform world with Decompose!
+This repo is a playground about best practices, using updated libraries and solutions in the Android world with Decompose!
 
 ## 🛠 Built With
-|  Architecture   |MVI Architecture Pattern |
+|  Architecture Pattern  |Decompose in Presentation Layer|
 |----------------   |------------------------------    |
 | <img height="20" width="20" src="https://3.bp.blogspot.com/-VVp3WvJvl84/X0Vu6EjYqDI/AAAAAAAAPjU/ZOMKiUlgfg8ok8DY8Hc-ocOvGdB0z86AgCLcBGAsYHQ/s1600/jetpack%2Bcompose%2Bicon_RGB.png">    UI Framework  | [Jetpack Compose](https://www.jetbrains.com/lp/compose-multiplatform/)         |                        |
 | 💉 DI                | [Koin](https://insert-koin.io/)                        |             |
