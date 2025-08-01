@@ -33,6 +33,7 @@
             <option value="$PROJECT_DIR$/home/presentation" />
             <option value="$PROJECT_DIR$/library" />
             <option value="$PROJECT_DIR$/library/designsystem" />
+            <option value="$PROJECT_DIR$/library/navigation" />
           </set>
         </option>
       </GradleProjectSettings>
