@@ -10,7 +10,7 @@ class CoinNewsFeatureConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             applyPlugins {
-                listOf("stap.library", "stap.koin")
+                listOf("coinNews.library", "coinNews.koin")
             }
             dependencies {
                 val subprojects = project

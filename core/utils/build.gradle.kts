@@ -8,7 +8,7 @@ plugins {
 }
 
 android {
-    namespace = "ir.stap.core.utils"
+    namespace = "com.rahim.coinnews.core.utils"
 }
 dependencies{
     implementation(libs.presianDate)
