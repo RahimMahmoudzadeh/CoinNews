@@ -4,7 +4,7 @@ import org.gradle.api.JavaVersion
 
 object Config {
   val android = AndroidConfig(
-    minSdkVersion = 23,
+    minSdkVersion = 28,
     targetSdkVersion = 36,
     compileSdkVersion = 36,
     applicationId = "com.rahim.coinnews",
