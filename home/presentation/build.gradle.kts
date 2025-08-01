@@ -1,6 +1,6 @@
 plugins {
     libs.plugins.coinNews.run {
-//        alias(feature)
+        alias(feature)
         alias(library.compose)
     }
 }
@@ -12,6 +12,6 @@ android {
 dependencies{
     projects.run {
         implementation(home.domain)
-//        implementation(core.network)
+        implementation(core.network)
     }
 }
