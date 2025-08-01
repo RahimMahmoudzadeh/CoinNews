@@ -8,7 +8,7 @@
 
 ![Static Badge](https://img.shields.io/badge/License-GPL--3.0-brightgreen)
 [![Contributions Highly Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/RahimMahmoudzadeh/CoinNews/issues)
-<a href="https://android-arsenal.com/api?level=26"><img alt="API" src="https://img.shields.io/badge/API-26%2B-brightgreen.svg?style=flat"/></a>
+<a href="https://android-arsenal.com/api?level=28"><img alt="API" src="https://img.shields.io/badge/API-28%2B-brightgreen.svg?style=flat"/></a>
 <img alt="Static Badge" src="https://img.shields.io/badge/GitHub-RahimMahmoudzadeh-%60Z%60?logo=github&color=blue&link=https%3A%2F%2Fgithub.com%2FRahimMahmoudzadeh">
 ![GitHub Repo stars](https://img.shields.io/github/stars/RahimMahmoudzadeh/CoinNews)
 ![GitHub forks](https://img.shields.io/github/forks/RahimMahmoudzadeh/CoinNews)
