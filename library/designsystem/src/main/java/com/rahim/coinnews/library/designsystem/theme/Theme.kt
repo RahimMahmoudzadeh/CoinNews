@@ -1,4 +1,4 @@
-package com.rahim.coinnews.ui.theme
+package com.rahim.coinnews.library.designsystem.theme
 
 import android.app.Activity
 import android.os.Build

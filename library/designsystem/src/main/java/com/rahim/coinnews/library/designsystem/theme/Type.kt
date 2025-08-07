@@ -1,4 +1,4 @@
-package com.rahim.coinnews.ui.theme
+package com.rahim.coinnews.library.designsystem.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
