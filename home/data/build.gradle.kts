@@ -11,10 +11,9 @@ android {
 }
 dependencies {
     projects.run {
-//        implementation(core.db)
-//        implementation(home.domain)
-//        implementation(core.network)
-//        implementation(core.utils)
+        implementation(home.domain)
+        implementation(core.network)
+        implementation(core.utils)
     }
     libs.run {
         implementation(presianDate)
