@@ -11,7 +11,6 @@ android {
 }
 dependencies{
     projects.run {
-//        implementation(core.db)
         implementation(core.utils)
     }
 }
