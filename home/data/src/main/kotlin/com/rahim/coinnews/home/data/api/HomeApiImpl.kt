@@ -15,9 +15,9 @@ import io.ktor.http.appendPathSegments
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class MarketsApiImpl(
+class HomeApiImpl(
     private val httpClient: HttpClient,
-) : MarketsApi {
+) : HomeApi {
     override suspend fun getMarkets(
         currency: String,
         order: String,

@@ -3,7 +3,7 @@ package com.rahim.coinnews.home.data.api
 import com.rahim.coinnews.home.data.dto.MarketResponse
 import com.rahim.coinnews.network.ApiResponse
 
-interface MarketsApi {
+interface HomeApi {
     suspend fun getMarkets(
         currency: String,
         order: String,

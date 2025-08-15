@@ -15,6 +15,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import com.airbnb.lottie.compose.LottieCompositionSpec
+import com.rahim.coinnews.core.utils.LoadableComponent
+import com.rahim.coinnews.core.utils.isLoading
+import com.rahim.coinnews.core.utils.use
+import com.rahim.coinnews.library.designsystem.component.EmptyStateAnimation
+import com.rahim.coinnews.library.designsystem.component.refresh.PullRefreshIndicator
+import com.rahim.coinnews.library.designsystem.component.refresh.pullRefresh
+import com.rahim.coinnews.library.designsystem.component.refresh.rememberPullRefreshState
 import com.rahim.coinnews.library.designsystem.preview.ThemePreviews
 import com.rahim.coinnews.library.designsystem.theme.CoinNewsTheme
 import com.rahim.coinnews.presentation.navigation.HomeComponent
@@ -23,21 +30,23 @@ import com.rahim.coinnews.presentation.preview_provider.HomeStateProvider
 
 @Composable
 fun HomeScreenRoute(
-    viewModel: MarketListViewModel = hiltViewModel(),
+    component: HomeComponent,
     showFavoriteList: Boolean = false,
-    onNavigateToDetailScreen: (market: MarketModel) -> Unit,
+    onNavigateToDetailScreen: () -> Unit,
 ) {
-    val (state, event) = use(viewModel = viewModel)
+    val (state, event) = use(component = component)
 
     HomeScreenScreen(
         state = state,
-        onNavigateToDetailScreen = onNavigateToDetailScreen,
+        onNavigateToDetailScreen = {
+            onNavigateToDetailScreen()
+        },
         showFavoriteList = showFavoriteList,
         onFavoriteClick = { market ->
-            event.invoke(MarketListContract.Event.OnFavoriteClick(market = market))
+            event.invoke(HomeComponent.Event.OnFavoriteClick(market = market))
         },
         onRefresh = {
-            event.invoke(MarketListContract.Event.OnGetMarketList)
+            event.invoke(HomeComponent.Event.OnGetMarketList)
         },
     )
 }
@@ -76,7 +85,7 @@ fun HomeScreenScreen(
                     if (data.isEmpty() && state.showFavoriteList) {
                         EmptyStateAnimation(
                             lottieCompositionSpec = LottieCompositionSpec.RawRes(
-                                R.raw.empty_state_animation,
+                                com.rahim.coinnews.library.designsystem.R.raw.empty_state_animation,
                             ),
                         )
                     } else {

@@ -27,6 +27,10 @@ class CoinNewsLibraryConventionPlugin : Plugin<Project> {
                     "implementation",
                     versionCatalog.findLibrary("kotlinx-serialization").get()
                 )
+                add(
+                    "implementation",
+                    versionCatalog.findLibrary("kotlinx-collections-immutable").get()
+                )
             }
         }
     }

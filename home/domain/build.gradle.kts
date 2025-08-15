@@ -11,9 +11,6 @@ android {
 }
 dependencies {
     projects.run {
-//        implementation(core.db)
-//        implementation(home.domain)
-//        implementation(core.network)
-//        implementation(core.utils)
+        implementation(core.utils)
     }
 }
