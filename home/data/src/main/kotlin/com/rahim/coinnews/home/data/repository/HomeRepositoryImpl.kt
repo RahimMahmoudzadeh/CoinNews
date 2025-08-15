@@ -18,7 +18,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 class HomeRepositoryImpl(private val marketApi: HomeApi) : HomeRepository {
-    override suspend fun getMarkets(): Flow<Resource<PersistentList<MarketDomainLayer>, Errors>> =
+    override fun getMarkets(): Flow<Resource<PersistentList<MarketDomainLayer>, Errors>> =
         flow {
             marketApi.getMarkets(
                 "usd",

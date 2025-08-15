@@ -7,5 +7,5 @@ import kotlinx.collections.immutable.PersistentList
 import kotlinx.coroutines.flow.Flow
 
 interface HomeRepository {
-    suspend fun getMarkets(): Flow<Resource<PersistentList<MarketDomainLayer>, Errors>>
+    fun getMarkets(): Flow<Resource<PersistentList<MarketDomainLayer>, Errors>>
 }
