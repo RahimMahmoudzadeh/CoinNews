@@ -14,4 +14,7 @@ dependencies{
         implementation(home.domain)
         implementation(core.network)
     }
+    libs.bundles.run{
+        implementation(coil)
+    }
 }
