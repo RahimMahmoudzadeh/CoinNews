@@ -1,23 +1,26 @@
 [versions]
 #setup project
 ksp = "2.2.0-2.0.2"
-kotlin = "2.2.0"
+kotlin = "2.2.10"
 kotlinxImmutableCollection = "0.4.0"
-agp = "8.11.1"
+agp = "8.12.1"
 
 #test
 junit = "4.13.2"
 
 #compose
-compose-bom = "2025.07.00"
+compose-bom = "2025.08.00"
 activity-compose = "1.10.1"
 lottie_compose = "6.6.7"
 material3Android = "1.3.2"
-compose-vewrsion = "1.8.3"
+compose-vewrsion = "1.9.0"
+
+#coil
+composeCoil = "2.7.0"
 
 #core
 androidDesugarJdkLibs = "2.1.5"
-androidx-core = "1.16.0"
+androidx-core = "1.17.0"
 
 #lifecycle
 androidx-lifecycle = "2.9.2"
@@ -26,11 +29,11 @@ androidx-lifecycle = "2.9.2"
 androidx-room = "2.7.2"
 
 #androidx
-androidx-ext-junit = "1.2.1"
+androidx-ext-junit = "1.3.0"
 androidxCoreSplashscreen = "1.0.1"
 androidxTracing = "1.3.0"
 
-espresso_core = "3.6.1"
+espresso_core = "3.7.0"
 
 #google-services
 google-services = "4.4.3"
@@ -42,14 +45,14 @@ spotless = "7.2.1"
 datastore = "1.1.7"
 
 #androidtools
-androidTools = "31.11.1"
+androidTools = "31.12.1"
 
 #firebase
-firebasePerfPlugin = "2.0.0"
-firebaseCrashlyticsPlugin = "3.0.5"
+firebasePerfPlugin = "2.0.1"
+firebaseCrashlyticsPlugin = "3.0.6"
 constraintlayout = "2.2.1"
-jetbrainsKotlinJvm = "2.2.0"
-firebaseBom = "34.0.0"
+jetbrainsKotlinJvm = "2.2.10"
+firebaseBom = "34.1.0"
 
 #koin
 koin-bom = "4.1.0"
@@ -57,7 +60,7 @@ appcompat = "1.7.1"
 material = "1.12.0"
 
 #ktor
-ktor = "3.2.2"
+ktor = "3.2.3"
 
 #coil
 coil = "3.3.0"
