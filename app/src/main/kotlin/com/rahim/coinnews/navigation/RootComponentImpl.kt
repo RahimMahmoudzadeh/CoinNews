@@ -33,6 +33,7 @@ class RootComponentImpl(componentContext: ComponentContext) : RootComponent,
 
             ConfigChildComponent.Favorites -> TODO()
         }
+    private val getMarketsUseCase: GetMarketsUseCase = get()
 
     override val stack: Value<ChildStack<*, RootComponent.ChildStack>> =
         childStack(
@@ -43,7 +44,6 @@ class RootComponentImpl(componentContext: ComponentContext) : RootComponent,
             childFactory = ::childComponent,
         )
 
-    private val getMarketsUseCase: GetMarketsUseCase = get()
     private fun homeComponent(componentContext: ComponentContext): HomeComponent =
         HomeComponentImpl(
             componentContext = componentContext,
