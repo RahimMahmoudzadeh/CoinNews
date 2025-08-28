@@ -120,9 +120,9 @@ koin-android-compose = { module = "io.insert-koin:koin-androidx-compose" }
 ktor-core = { group = "io.ktor", name = "ktor-client-core", version.ref = "ktor" }
 ktor-cio = { group = "io.ktor", name = "ktor-client-cio", version.ref = "ktor" }
 ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktor" }
-ktor-client-auth = { module = "io.ktor:ktor-client-auth", version.ref = "ktor" }
 ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
 ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+ktor-logging = { group = "io.ktor", name = "ktor-client-logging", version.ref = "ktor" }
 
 
 #persianDate
@@ -186,7 +186,7 @@ room = ["room-runtime", "room-ktx"]
 koin = ["koin-android-compose", "koin-ktor", "koin-core", "koin-android"]
 firebase = ["firebaseMessaging", "firebaseAnalytics", "firebaseCrashlytics"]
 test = ["androidx-test-ext", "androidx-test-espresso", "androidx-compose-ui-test"]
-ktor = ["ktor-cio", "ktor-core", "ktor-client-android", "ktor-serialization-kotlinx-json", "ktor-client-content-negotiation", "ktor-client-auth"]
+ktor = ["ktor-cio", "ktor-core", "ktor-client-android", "ktor-serialization-kotlinx-json", "ktor-client-content-negotiation","ktor-logging"]
 coil = ["coil-compose", "coil-compose-core", "coil-network-ktor3", "coil-svg", "coil-test"]
 decompose = ["decompose", "decompose-jetbrains", "decompose-experimental", "decompose-lifecycle-coroutines"]
 paging = ["paging", "paging-compose"]

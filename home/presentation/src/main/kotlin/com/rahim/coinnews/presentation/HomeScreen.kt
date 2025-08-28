@@ -16,6 +16,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.rahim.coinnews.core.utils.LoadableComponent
+import com.rahim.coinnews.core.utils.errorViewMapper
+import com.rahim.coinnews.core.utils.extentian.roundToTwoDecimalPlaces
 import com.rahim.coinnews.core.utils.isLoading
 import com.rahim.coinnews.core.utils.use
 import com.rahim.coinnews.library.designsystem.component.EmptyStateAnimation
@@ -24,24 +26,24 @@ import com.rahim.coinnews.library.designsystem.component.refresh.pullRefresh
 import com.rahim.coinnews.library.designsystem.component.refresh.rememberPullRefreshState
 import com.rahim.coinnews.library.designsystem.preview.ThemePreviews
 import com.rahim.coinnews.library.designsystem.theme.CoinNewsTheme
+import com.rahim.coinnews.presentation.component.MarketItem
+import com.rahim.coinnews.presentation.model.MarketPresentationLayer
 import com.rahim.coinnews.presentation.navigation.HomeComponent
-import com.rahim.coinnews.presentation.preview_provider.HomeStateProvider
+import com.rahim.coinnews.presentation.previewProvider.HomeStateProvider
+import com.rahim.coinnews.library.designsystem.widget.ErrorView
 
 
 @Composable
 fun HomeScreenRoute(
     component: HomeComponent,
-    showFavoriteList: Boolean = false,
-    onNavigateToDetailScreen: () -> Unit,
 ) {
     val (state, event) = use(component = component)
 
     HomeScreenScreen(
         state = state,
         onNavigateToDetailScreen = {
-            onNavigateToDetailScreen()
         },
-        showFavoriteList = showFavoriteList,
+        showFavoriteList = false,
         onFavoriteClick = { market ->
             event.invoke(HomeComponent.Event.OnFavoriteClick(market = market))
         },
@@ -52,11 +54,11 @@ fun HomeScreenRoute(
 }
 
 @Composable
-fun HomeScreenScreen(
+internal fun HomeScreenScreen(
     state: HomeComponent.State,
     showFavoriteList: Boolean,
-    onNavigateToDetailScreen: (market: MarketModel) -> Unit,
-    onFavoriteClick: (market: MarketModel) -> Unit,
+    onNavigateToDetailScreen: (market: MarketPresentationLayer) -> Unit,
+    onFavoriteClick: (market: MarketPresentationLayer) -> Unit,
     onRefresh: () -> Unit,
 ) {
     val refreshState = rememberPullRefreshState(
@@ -127,7 +129,29 @@ fun HomeScreenScreen(
         )
     }
 }
-
+@Composable
+fun MarketListItem(
+    modifier: Modifier,
+    market: MarketPresentationLayer,
+    showFavoriteList: Boolean,
+    onItemClick: () -> Unit,
+    onFavoriteClick: () -> Unit,
+) {
+    with(market) {
+        MarketItem(
+            modifier = modifier,
+            name = name,
+            symbol = symbol,
+            urlToImage = imageUrl,
+            price = currentPrice.toString(),
+            priceChangePercentage24h = priceChangePercentage24h.roundToTwoDecimalPlaces(),
+            isFavorite = isFavorite,
+            showFavoriteList = showFavoriteList,
+            onItemClick = onItemClick,
+            onFavoriteClick = onFavoriteClick,
+        )
+    }
+}
 @ThemePreviews
 @Composable
 private fun MarketListScreenPrev(

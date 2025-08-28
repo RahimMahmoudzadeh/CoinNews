@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import com.arkivanov.decompose.defaultComponentContext
@@ -17,7 +18,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        val root =  RootComponentImpl(componentContext = defaultComponentContext())
+        val root = RootComponentImpl(componentContext = defaultComponentContext())
 
         setContent {
             val stack = root.stack.subscribeAsState()
@@ -33,7 +34,7 @@ class MainActivity : ComponentActivity() {
                         )
                     }
                 ) { innerPadding ->
-
+                    RootContent(component = root, modifier = Modifier.padding(innerPadding))
                 }
             }
         }

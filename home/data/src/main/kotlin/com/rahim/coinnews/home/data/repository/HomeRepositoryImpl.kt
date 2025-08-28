@@ -1,5 +1,6 @@
 package com.rahim.coinnews.home.data.repository
 
+import android.util.Log
 import com.rahim.coinnews.core.utils.Errors
 import com.rahim.coinnews.core.utils.Resource
 import com.rahim.coinnews.domain.model.MarketDomainLayer
@@ -7,6 +8,8 @@ import com.rahim.coinnews.domain.repository.HomeRepository
 import com.rahim.coinnews.home.data.api.HomeApi
 import com.rahim.coinnews.home.data.mapper.toMarketDomainLayer
 import com.rahim.coinnews.network.mapMessageStatusCode
+import com.rahim.coinnews.network.onError
+import com.rahim.coinnews.network.onException
 import com.rahim.coinnews.network.statusCode
 import com.rahim.coinnews.network.suspendMap
 import com.rahim.coinnews.network.suspendOnError
@@ -16,6 +19,7 @@ import kotlinx.collections.immutable.PersistentList
 import kotlinx.collections.immutable.toPersistentList
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.map
 
 class HomeRepositoryImpl(private val marketApi: HomeApi) : HomeRepository {
     override fun getMarkets(): Flow<Resource<PersistentList<MarketDomainLayer>, Errors>> =
@@ -27,23 +31,14 @@ class HomeRepositoryImpl(private val marketApi: HomeApi) : HomeRepository {
                 1,
                 false,
             ).suspendOnSuccess {
-                suspendMap { result ->
-                    emit(Resource.Success(result.data.map { it.toMarketDomainLayer() }
-                        .toPersistentList()))
+                val marketEntityList = data.map { marketResponse ->
+                    marketResponse.toMarketDomainLayer()
                 }
-            }.suspendOnError {
-                suspendMap {
-                    emit(
-                        Resource.Error(
-                            error = Errors.ApiError(
-                                it.statusCode.mapMessageStatusCode(),
-                                it.statusCode.code,
-                            ),
-                        ),
-                    )
-                }
-            }.suspendOnException {
-                suspendMap { emit(Resource.Error(Errors.ExceptionError(it.message, throwable))) }
+                emit(Resource.Success(marketEntityList.toPersistentList()))
+            }.onError {
+                Log.d("debug", message)
+            }.onException {
+                Log.d("debug", message.toString())
             }
         }
 }

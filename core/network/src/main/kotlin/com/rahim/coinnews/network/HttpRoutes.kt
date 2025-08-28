@@ -1,7 +1,7 @@
 package com.rahim.coinnews.network
 
 object HttpRoutes {
-    const val BASE_URL = "https://api.coingecko.com/api/v3/"
+    const val BASE_URL = "api.coingecko.com/api/v3"
     const val COINS = "coins"
     const val MARKETS = "markets"
     const val VS_CURRENCY = "vs_currency"
