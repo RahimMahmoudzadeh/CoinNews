@@ -11,10 +11,11 @@ inline fun <T> ApiResponse<T>.onSuccess(
     crossinline onResult: ApiResponse.Success<T>.() -> Unit,
 ): ApiResponse<T> {
     contract { callsInPlace(onResult, InvocationKind.AT_MOST_ONCE) }
-    if (this is ApiResponse.Success) {
-        onResult(this)
+    return this.also {
+        if (it is ApiResponse.Success) {
+            onResult(it)
+        }
     }
-    return this
 }
 
 @OptIn(ExperimentalContracts::class)
@@ -22,10 +23,11 @@ suspend inline fun <T> ApiResponse<T>.suspendOnSuccess(
     crossinline onResult: suspend ApiResponse.Success<T>.() -> Unit,
 ): ApiResponse<T> {
     contract { callsInPlace(onResult, InvocationKind.AT_MOST_ONCE) }
-    if (this is ApiResponse.Success) {
-        onResult(this)
+    return this.also {
+        if (it is ApiResponse.Success) {
+            onResult(it)
+        }
     }
-    return this
 }
 
 @OptIn(ExperimentalContracts::class)
@@ -41,10 +43,11 @@ suspend inline fun <T> ApiResponse<T>.suspendOnError(
     crossinline onResult: suspend ApiResponse.Failure.Error.() -> Unit,
 ): ApiResponse<T> {
     contract { callsInPlace(onResult, InvocationKind.AT_MOST_ONCE) }
-    if (this is ApiResponse.Failure.Error) {
-        onResult(this)
+    return this.also {
+        if (it is ApiResponse.Failure.Error) {
+            onResult(it)
+        }
     }
-    return this
 }
 
 @OptIn(ExperimentalContracts::class)
@@ -52,10 +55,11 @@ inline fun <T> ApiResponse<T>.onError(
     crossinline onResult: ApiResponse.Failure.Error.() -> Unit,
 ): ApiResponse<T> {
     contract { callsInPlace(onResult, InvocationKind.AT_MOST_ONCE) }
-    if (this is ApiResponse.Failure.Error) {
-        onResult(this)
+    return this.also {
+        if (it is ApiResponse.Failure.Error) {
+            onResult(it)
+        }
     }
-    return this
 }
 
 @OptIn(ExperimentalContracts::class)
@@ -71,10 +75,11 @@ suspend inline fun <T> ApiResponse<T>.suspendOnException(
     crossinline onResult: suspend ApiResponse.Failure.Exception.() -> Unit,
 ): ApiResponse<T> {
     contract { callsInPlace(onResult, InvocationKind.AT_MOST_ONCE) }
-    if (this is ApiResponse.Failure.Exception) {
-        onResult(this)
+    return this.also {
+        if (it is ApiResponse.Failure.Exception) {
+            onResult(it)
+        }
     }
-    return this
 }
 
 @OptIn(ExperimentalContracts::class)
@@ -82,10 +87,11 @@ inline fun <T> ApiResponse<T>.onException(
     crossinline onResult: ApiResponse.Failure.Exception.() -> Unit,
 ): ApiResponse<T> {
     contract { callsInPlace(onResult, InvocationKind.AT_MOST_ONCE) }
-    if (this is ApiResponse.Failure.Exception) {
-        onResult(this)
+    return this.also {
+        if (it is ApiResponse.Failure.Exception) {
+            onResult(it)
+        }
     }
-    return this
 }
 
 @OptIn(ExperimentalContracts::class)

@@ -17,9 +17,12 @@ import com.rahim.coinnews.network.suspendOnException
 import com.rahim.coinnews.network.suspendOnSuccess
 import kotlinx.collections.immutable.PersistentList
 import kotlinx.collections.immutable.toPersistentList
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.withContext
+import kotlin.code
 
 class HomeRepositoryImpl(private val marketApi: HomeApi) : HomeRepository {
     override fun getMarkets(): Flow<Resource<PersistentList<MarketDomainLayer>, Errors>> =
@@ -35,10 +38,14 @@ class HomeRepositoryImpl(private val marketApi: HomeApi) : HomeRepository {
                     marketResponse.toMarketDomainLayer()
                 }
                 emit(Resource.Success(marketEntityList.toPersistentList()))
-            }.onError {
-                Log.d("debug", message)
-            }.onException {
-                Log.d("debug", message.toString())
+            }.suspendOnError {
+                suspendMap {
+                    emit(Resource.Error(Errors.ApiError(message = it.message, code = it.statusCode.code)))
+                }
+            }.suspendOnException {
+                suspendMap {
+                    emit(Resource.Error(Errors.ExceptionError(message = message, throwable = throwable)))
+                }
             }
         }
 }
