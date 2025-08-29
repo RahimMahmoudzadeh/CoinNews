@@ -29,11 +29,10 @@ fun BottomNavigationBar(
     ) {
         NavigationBarItem(
             colors = NavigationBarItemDefaults.colors(
-                selectedIconColor = MaterialTheme.colorScheme.primary,
-                unselectedIconColor = MaterialTheme.colorScheme.onTertiaryContainer,
-                selectedTextColor = MaterialTheme.colorScheme.onPrimaryContainer,
-                unselectedTextColor = MaterialTheme.colorScheme.onTertiaryContainer,
-                indicatorColor = MaterialTheme.colorScheme.onBackground
+                selectedIconColor = MaterialTheme.colorScheme.secondary,
+                unselectedIconColor = MaterialTheme.colorScheme.onSecondary,
+                selectedTextColor = MaterialTheme.colorScheme.tertiary,
+                indicatorColor = MaterialTheme.colorScheme.onPrimary
             ),
             onClick = {
                 component.onTabClick(ConfigChildComponent.Home)
@@ -46,30 +45,31 @@ fun BottomNavigationBar(
                 )
             },
             label = {
-                Text(text = stringResource(BottomNavItem.Favorite.title), fontSize = 12.sp)
+                if (configuration is ConfigChildComponent.Home)
+                    Text(text = stringResource(BottomNavItem.Favorite.title), fontSize = 12.sp)
             },
             selected = configuration is ConfigChildComponent.Home,
         )
         NavigationBarItem(
             colors = NavigationBarItemDefaults.colors(
-                selectedIconColor = MaterialTheme.colorScheme.primary,
-                unselectedIconColor = MaterialTheme.colorScheme.onTertiaryContainer,
-                selectedTextColor = MaterialTheme.colorScheme.onPrimaryContainer,
-                unselectedTextColor = MaterialTheme.colorScheme.onTertiaryContainer,
-                indicatorColor = MaterialTheme.colorScheme.onBackground
+                selectedIconColor = MaterialTheme.colorScheme.secondary,
+                unselectedIconColor = MaterialTheme.colorScheme.onSecondary,
+                selectedTextColor = MaterialTheme.colorScheme.tertiary,
+                indicatorColor = MaterialTheme.colorScheme.onPrimary
             ),
             onClick = {
                 component.onTabClick(ConfigChildComponent.Favorites)
             },
             icon = {
                 Icon(
-                    imageVector =  BottomNavItem.Favorite.icon,
+                    imageVector = BottomNavItem.Favorite.icon,
                     contentDescription = BottomNavItem.Home.route,
                     modifier = Modifier.size(22.dp)
                 )
             },
             label = {
-                Text(text = stringResource(BottomNavItem.Home.title), fontSize = 12.sp)
+                if (configuration is ConfigChildComponent.Favorites)
+                    Text(text = stringResource(BottomNavItem.Home.title), fontSize = 12.sp)
             },
             selected = configuration is ConfigChildComponent.Favorites,
         )

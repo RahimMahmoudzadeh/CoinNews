@@ -96,28 +96,17 @@ internal fun HomeScreenScreen(
                                 items = data,
                                 key = { it.name },
                             ) { market ->
-                                Modifier
-                                    .fillMaxWidth()
-                                Column(
-                                    modifier =
-                                        Modifier.animateItem(
-                                            placementSpec = tween(durationMillis = 250),
-                                            fadeInSpec = null,
-                                            fadeOutSpec = null,
-                                        ),
-                                ) {
-                                    MarketListItem(
-                                        modifier = Modifier,
-                                        market = market,
-                                        showFavoriteList = showFavoriteList,
-                                        onItemClick = {
-                                            onNavigateToDetailScreen(market)
-                                        },
-                                        onFavoriteClick = {
-                                            onFavoriteClick(market)
-                                        },
-                                    )
-                                }
+                                MarketListItem(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    market = market,
+                                    showFavoriteList = showFavoriteList,
+                                    onItemClick = {
+                                        onNavigateToDetailScreen(market)
+                                    },
+                                    onFavoriteClick = {
+                                        onFavoriteClick(market)
+                                    },
+                                )
                             }
                         }
                     }

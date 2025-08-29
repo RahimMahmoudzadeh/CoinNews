@@ -182,14 +182,14 @@ private fun MarketItemCard(
             ) {
                 Text(
                     text = symbol.uppercase(Locale.getDefault()),
-                    style = MaterialTheme.typography.headlineSmall,
+                    color = MaterialTheme.colorScheme.primary,
                 )
-                Text(text = name, style = MaterialTheme.typography.bodyLarge)
+                Text(text = name,color = MaterialTheme.colorScheme.primary,)
             }
             Column(
                 modifier = Modifier.weight(1.5F),
             ) {
-                Text(text = "$price $", style = MaterialTheme.typography.titleMedium)
+                Text(text = "$price $",color = MaterialTheme.colorScheme.primary,)
                 Spacer(modifier = Modifier.height(6.dp))
                 Row {
                     val color = when {
