@@ -11,7 +11,7 @@ android {
 
 dependencies{
     projects.run {
-        implementation(home.domain)
+        implementation(coindetail.domain)
         implementation(core.network)
     }
     libs.bundles.run{
