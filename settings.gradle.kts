@@ -32,3 +32,5 @@ include(
 include(subprojects("home"))
 include(subprojects("core"))
 include(subprojects("library"))
+include(subprojects("coindetail"))
+include(":coindetail:data")
