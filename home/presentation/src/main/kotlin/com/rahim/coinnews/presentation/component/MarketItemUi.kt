@@ -1,6 +1,5 @@
 package com.rahim.coinnews.presentation.component
 
-import android.inputmethodservice.Keyboard
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.fadeOut
@@ -58,7 +57,7 @@ import kotlinx.coroutines.delay
 import java.util.Locale
 
 @Composable
-fun MarketItem(
+fun MarketItemUi(
     modifier: Modifier,
     name: String,
     symbol: String,
@@ -236,10 +235,10 @@ private fun ArrowIconUpOrDown(priceChangePercentage24h: String, tint: Color) {
 
 @ThemePreviews
 @Composable
-private fun MarketItemPrev() {
+private fun MarketItemUiPrev() {
     CoinNewsTheme {
         Surface {
-            MarketItem(
+            MarketItemUi(
                 modifier = Modifier,
                 name = "Title",
                 symbol = "BTC",

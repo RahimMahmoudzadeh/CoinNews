@@ -1,11 +1,9 @@
 package com.rahim.coinnews.presentation
 
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -26,7 +24,7 @@ import com.rahim.coinnews.library.designsystem.component.refresh.pullRefresh
 import com.rahim.coinnews.library.designsystem.component.refresh.rememberPullRefreshState
 import com.rahim.coinnews.library.designsystem.preview.ThemePreviews
 import com.rahim.coinnews.library.designsystem.theme.CoinNewsTheme
-import com.rahim.coinnews.presentation.component.MarketItem
+import com.rahim.coinnews.presentation.component.MarketItemUi
 import com.rahim.coinnews.presentation.model.MarketPresentationLayer
 import com.rahim.coinnews.presentation.navigation.HomeComponent
 import com.rahim.coinnews.presentation.previewProvider.HomeStateProvider
@@ -127,7 +125,7 @@ fun MarketListItem(
     onFavoriteClick: () -> Unit,
 ) {
     with(market) {
-        MarketItem(
+        MarketItemUi(
             modifier = modifier,
             name = name,
             symbol = symbol,
