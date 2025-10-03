@@ -36,6 +36,8 @@ class CoinNewsApplicationConventionPlugin : Plugin<Project> {
 
                 subprojects.filter { it.path.startsWith(":home:", false) }
                     .forEach { add("implementation", project(it.path)) }
+                subprojects.filter { it.path.startsWith(":coindetail:", false) }
+                    .forEach { add("implementation", project(it.path)) }
                 subprojects.filter { it.path.startsWith(":register:", false) }
                     .forEach { add("implementation", project(it.path)) }
                 subprojects.filter { it.path.startsWith(":invoice:", false) }
