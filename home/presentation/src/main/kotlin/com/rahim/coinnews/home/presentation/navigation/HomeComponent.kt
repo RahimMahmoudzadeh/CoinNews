@@ -1,9 +1,9 @@
-package com.rahim.coinnews.presentation.navigation
+package com.rahim.coinnews.home.presentation.navigation
 
 import androidx.compose.runtime.Immutable
 import com.rahim.coinnews.core.utils.LoadableData
 import com.rahim.coinnews.core.utils.UnidirectionalComponent
-import com.rahim.coinnews.presentation.model.MarketPresentationLayer
+import com.rahim.coinnews.home.presentation.model.MarketPresentationLayer
 import kotlinx.collections.immutable.PersistentList
 
 interface HomeComponent :

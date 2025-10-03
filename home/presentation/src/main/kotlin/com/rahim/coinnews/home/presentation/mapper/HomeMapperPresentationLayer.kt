@@ -1,7 +1,7 @@
-package com.rahim.coinnews.presentation.mapper
+package com.rahim.coinnews.home.presentation.mapper
 
 import com.rahim.coinnews.domain.model.MarketDomainLayer
-import com.rahim.coinnews.presentation.model.MarketPresentationLayer
+import com.rahim.coinnews.home.presentation.model.MarketPresentationLayer
 
 fun MarketDomainLayer.toMarketPresentationLayer(): MarketPresentationLayer =
     MarketPresentationLayer(

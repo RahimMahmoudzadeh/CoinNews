@@ -1,4 +1,4 @@
-package com.rahim.coinnews.presentation.navigation
+package com.rahim.coinnews.home.presentation.navigation
 
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.value.MutableValue
@@ -10,15 +10,13 @@ import com.rahim.coinnews.core.utils.Errors
 import com.rahim.coinnews.core.utils.LoadableData
 import com.rahim.coinnews.core.utils.Resource
 import com.rahim.coinnews.domain.useCase.GetMarketsUseCase
-import com.rahim.coinnews.presentation.mapper.toMarketPresentationLayer
+import com.rahim.coinnews.home.presentation.mapper.toMarketPresentationLayer
 import kotlinx.collections.immutable.toPersistentList
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.flow.update
-import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
 class HomeComponentImpl(

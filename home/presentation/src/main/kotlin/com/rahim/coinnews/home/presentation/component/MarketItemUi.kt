@@ -1,4 +1,4 @@
-package com.rahim.coinnews.presentation.component
+package com.rahim.coinnews.home.presentation.component
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.spring

@@ -1,4 +1,4 @@
-package com.rahim.coinnews.presentation.model
+package com.rahim.coinnews.home.presentation.model
 
 data class MarketPresentationLayer(
     val id: String,

@@ -1,4 +1,4 @@
-package com.rahim.coinnews.presentation
+package com.rahim.coinnews.home.presentation
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
@@ -18,16 +18,17 @@ import com.rahim.coinnews.core.utils.errorViewMapper
 import com.rahim.coinnews.core.utils.extentian.roundToTwoDecimalPlaces
 import com.rahim.coinnews.core.utils.isLoading
 import com.rahim.coinnews.core.utils.use
+import com.rahim.coinnews.library.designsystem.R
 import com.rahim.coinnews.library.designsystem.component.EmptyStateAnimation
 import com.rahim.coinnews.library.designsystem.component.refresh.PullRefreshIndicator
 import com.rahim.coinnews.library.designsystem.component.refresh.pullRefresh
 import com.rahim.coinnews.library.designsystem.component.refresh.rememberPullRefreshState
 import com.rahim.coinnews.library.designsystem.preview.ThemePreviews
 import com.rahim.coinnews.library.designsystem.theme.CoinNewsTheme
-import com.rahim.coinnews.presentation.component.MarketItemUi
-import com.rahim.coinnews.presentation.model.MarketPresentationLayer
-import com.rahim.coinnews.presentation.navigation.HomeComponent
-import com.rahim.coinnews.presentation.previewProvider.HomeStateProvider
+import com.rahim.coinnews.home.presentation.component.MarketItemUi
+import com.rahim.coinnews.home.presentation.model.MarketPresentationLayer
+import com.rahim.coinnews.home.presentation.navigation.HomeComponent
+import com.rahim.coinnews.home.presentation.previewProvider.HomeStateProvider
 import com.rahim.coinnews.library.designsystem.widget.ErrorView
 
 
@@ -85,7 +86,7 @@ internal fun HomeScreenScreen(
                     if (data.isEmpty() && state.showFavoriteList) {
                         EmptyStateAnimation(
                             lottieCompositionSpec = LottieCompositionSpec.RawRes(
-                                com.rahim.coinnews.library.designsystem.R.raw.empty_state_animation,
+                                R.raw.empty_state_animation,
                             ),
                         )
                     } else {
