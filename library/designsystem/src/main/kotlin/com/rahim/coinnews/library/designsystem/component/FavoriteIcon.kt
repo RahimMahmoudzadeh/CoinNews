@@ -1,5 +1,6 @@
 package com.rahim.coinnews.library.designsystem.component
 
+import androidx.appcompat.R
 import androidx.compose.animation.animateColor
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.LinearEasing
@@ -11,8 +12,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
@@ -23,6 +22,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import com.rahim.coinnews.library.designsystem.preview.ThemePreviews
 import com.rahim.coinnews.library.designsystem.theme.CoinNewsTheme
@@ -60,7 +61,7 @@ fun FavoriteIcon(
     }
 
     Icon(
-        imageVector = Icons.Filled.Favorite,
+        imageVector = ImageVector.vectorResource(com.rahim.coinnews.library.designsystem.R.drawable.ic_favorite),
         contentDescription = "",
         tint = colorTintFavorite,
         modifier = Modifier

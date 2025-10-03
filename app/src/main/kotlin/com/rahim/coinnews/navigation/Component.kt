@@ -10,7 +10,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.rahim.coinnews.library.navigation.component.BottomNavItem
@@ -39,7 +41,7 @@ fun BottomNavigationBar(
             },
             icon = {
                 Icon(
-                    imageVector = BottomNavItem.Home.icon,
+                    imageVector = ImageVector.vectorResource(BottomNavItem.Home.iconId),
                     contentDescription = BottomNavItem.Favorite.route,
                     modifier = Modifier.size(22.dp)
                 )
@@ -62,7 +64,7 @@ fun BottomNavigationBar(
             },
             icon = {
                 Icon(
-                    imageVector = BottomNavItem.Favorite.icon,
+                    imageVector = ImageVector.vectorResource(BottomNavItem.Favorite.iconId),
                     contentDescription = BottomNavItem.Home.route,
                     modifier = Modifier.size(22.dp)
                 )
