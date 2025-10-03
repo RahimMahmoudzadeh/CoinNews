@@ -6,11 +6,16 @@ import com.arkivanov.decompose.router.stack.StackNavigation
 import com.arkivanov.decompose.router.stack.bringToFront
 import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.value.Value
+import com.rahim.coinnews.coindetail.domain.useCase.GetMarketChartUseCase
+import com.rahim.coinnews.coindetail.domain.useCase.GetMarketDetailUseCase
+import com.rahim.coinnews.coindetail.domain.useCase.ToggleFavoriteMarketListUseCase
+import com.rahim.coinnews.coindetail.presentation.navigation.CoinDetailComponent
+import com.rahim.coinnews.coindetail.presentation.navigation.CoinDetailComponentImpl
 import com.rahim.coinnews.domain.useCase.GetMarketsUseCase
 import com.rahim.coinnews.library.navigation.config.ConfigChildComponent
 import com.rahim.coinnews.navigation.RootComponent.ChildStack.*
-import com.rahim.coinnews.presentation.navigation.HomeComponent
-import com.rahim.coinnews.presentation.navigation.HomeComponentImpl
+import com.rahim.coinnews.home.presentation.navigation.HomeComponent
+import com.rahim.coinnews.home.presentation.navigation.HomeComponentImpl
 import kotlinx.coroutines.Dispatchers
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.get
@@ -21,34 +26,48 @@ class RootComponentImpl(componentContext: ComponentContext) : RootComponent,
     private val navigation = StackNavigation<ConfigChildComponent>()
 
     private fun childComponent(
-        config: ConfigChildComponent,
-        childComponentContext: ComponentContext
-    ): RootComponent.ChildStack =
-        when (config) {
-            ConfigChildComponent.Home -> HomeChildStack(
-                homeComponent(
-                    childComponentContext
-                )
+        config: ConfigChildComponent, childComponentContext: ComponentContext
+    ): RootComponent.ChildStack = when (config) {
+        ConfigChildComponent.Home -> HomeChildStack(
+            homeComponent(
+                childComponentContext
             )
+        )
 
-            ConfigChildComponent.Favorites -> TODO()
-        }
+        ConfigChildComponent.Favorites -> TODO()
+        ConfigChildComponent.Detail -> CoinDetailChildStack(
+            coinDetailComponent(childComponentContext)
+        )
+    }
+
     private val getMarketsUseCase: GetMarketsUseCase = get()
 
-    override val stack: Value<ChildStack<*, RootComponent.ChildStack>> =
-        childStack(
-            source = navigation,
-            serializer = ConfigChildComponent.serializer(),
-            initialConfiguration = ConfigChildComponent.Home,
-            handleBackButton = true,
-            childFactory = ::childComponent,
-        )
+    override val stack: Value<ChildStack<*, RootComponent.ChildStack>> = childStack(
+        source = navigation,
+        serializer = ConfigChildComponent.serializer(),
+        initialConfiguration = ConfigChildComponent.Home,
+        handleBackButton = true,
+        childFactory = ::childComponent,
+    )
 
     private fun homeComponent(componentContext: ComponentContext): HomeComponent =
         HomeComponentImpl(
             componentContext = componentContext,
             mainContext = Dispatchers.Main,
             getMarketsUseCase = getMarketsUseCase
+        )
+
+    private val getMarketChartUseCase: GetMarketChartUseCase = get()
+    private val getMarketDetailUseCase: GetMarketDetailUseCase = get()
+    private val toggleFavoriteMarketListUseCase: ToggleFavoriteMarketListUseCase = get()
+
+    private fun coinDetailComponent(componentContext: ComponentContext): CoinDetailComponent =
+        CoinDetailComponentImpl(
+            componentContext = componentContext,
+            mainContext = Dispatchers.Main,
+            getMarketChartUseCase = getMarketChartUseCase,
+            getMarketDetailUseCase = getMarketDetailUseCase,
+            toggleFavoriteMarketListUseCase = toggleFavoriteMarketListUseCase,
         )
 
     override fun onTabClick(tab: ConfigChildComponent) {
