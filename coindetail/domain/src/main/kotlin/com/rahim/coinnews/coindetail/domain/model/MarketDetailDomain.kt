@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class MarketDetailDomainLayerCoinDetail(
+data class MarketDetailDomain(
     val id: String,
     val marketCapRank: Int,
     val marketData: MarketDataDomainLayerCoinDetail?,
