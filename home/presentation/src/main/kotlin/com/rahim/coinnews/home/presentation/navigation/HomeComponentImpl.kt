@@ -22,6 +22,7 @@ import kotlin.coroutines.CoroutineContext
 class HomeComponentImpl(
     componentContext: ComponentContext,
     mainContext: CoroutineContext,
+    private val onNavigateDetailScreen:(String)-> Unit,
     private val getMarketsUseCase: GetMarketsUseCase,
 ) :
     HomeComponent,
@@ -50,6 +51,8 @@ class HomeComponentImpl(
         is HomeComponent.Event.OnSetShowFavoriteList -> onSetShowFavoriteList(
             showFavoriteList = event.showFavoriteList,
         )
+
+        is HomeComponent.Event.OnNavigateDetailScreen -> onNavigateDetailScreen(event.idCoin)
     }
 
     private fun onSetShowFavoriteList(showFavoriteList: Boolean) {

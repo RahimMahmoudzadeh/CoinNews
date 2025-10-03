@@ -41,6 +41,7 @@ fun HomeScreenRoute(
     HomeScreenScreen(
         state = state,
         onNavigateToDetailScreen = {
+            event(HomeComponent.Event.OnNavigateDetailScreen(it.id))
         },
         showFavoriteList = false,
         onFavoriteClick = { market ->
@@ -117,6 +118,7 @@ internal fun HomeScreenScreen(
         )
     }
 }
+
 @Composable
 fun MarketListItem(
     modifier: Modifier,
@@ -140,6 +142,7 @@ fun MarketListItem(
         )
     }
 }
+
 @ThemePreviews
 @Composable
 private fun MarketListScreenPrev(

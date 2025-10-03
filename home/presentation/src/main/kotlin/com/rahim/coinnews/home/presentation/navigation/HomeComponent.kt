@@ -12,6 +12,7 @@ interface HomeComponent :
     sealed class Event {
         data class OnSetShowFavoriteList(val showFavoriteList: Boolean) : Event()
         data class OnFavoriteClick(val market: MarketPresentationLayer) : Event()
+        data class OnNavigateDetailScreen(val idCoin: String) : Event()
         data object OnGetMarketList : Event()
     }
 
