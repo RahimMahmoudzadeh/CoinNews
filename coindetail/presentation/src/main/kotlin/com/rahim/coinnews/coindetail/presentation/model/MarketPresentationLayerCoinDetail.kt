@@ -3,7 +3,7 @@ package com.rahim.coinnews.coindetail.presentation.model
 import android.os.Parcel
 import android.os.Parcelable
 
-data class CoinDetailMarketPresentationLayer(
+data class MarketPresentationLayerCoinDetail(
     val id: String,
     val name: String,
     val symbol: String,
@@ -36,12 +36,12 @@ data class CoinDetailMarketPresentationLayer(
         return 0
     }
 
-    companion object CREATOR : Parcelable.Creator<CoinDetailMarketPresentationLayer> {
-        override fun createFromParcel(parcel: Parcel): CoinDetailMarketPresentationLayer {
-            return CoinDetailMarketPresentationLayer(parcel)
+    companion object CREATOR : Parcelable.Creator<MarketPresentationLayerCoinDetail> {
+        override fun createFromParcel(parcel: Parcel): MarketPresentationLayerCoinDetail {
+            return MarketPresentationLayerCoinDetail(parcel)
         }
 
-        override fun newArray(size: Int): Array<CoinDetailMarketPresentationLayer?> {
+        override fun newArray(size: Int): Array<MarketPresentationLayerCoinDetail?> {
             return arrayOfNulls(size)
         }
     }
