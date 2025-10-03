@@ -25,7 +25,7 @@ private fun market() = MarketPresentationLayerCoinDetail(
     priceChangePercentage24h = 100000.0,
     imageUrl = "some_shit_url.png",
 )
-class MarketDetailStateProvider : PreviewParameterProvider<CoinDetailComponent.State> {
+class CoinDetailStateProvider : PreviewParameterProvider<CoinDetailComponent.State> {
     override val values: Sequence<CoinDetailComponent.State> = sequenceOf(
         CoinDetailComponent.State(
             market = LoadableData.Loading,

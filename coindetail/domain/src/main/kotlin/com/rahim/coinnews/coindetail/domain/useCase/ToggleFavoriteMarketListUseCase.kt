@@ -1,10 +1,10 @@
 package com.rahim.coinnews.coindetail.domain.useCase
 
-import com.rahim.coinnews.coindetail.domain.model.MarketDomainLayerCoinDetail
+import com.rahim.coinnews.coindetail.domain.model.MarketDomain
 import com.rahim.coinnews.coindetail.domain.repository.CoinDetailRepository
 
-open class ToggleFavoriteMarketListUseCase (
+class ToggleFavoriteMarketListUseCase (
     private val repository: CoinDetailRepository,
 ) {
-    open suspend operator fun invoke(market: MarketDomainLayerCoinDetail) = repository.toggleFavoriteMarket(market)
+//    suspend operator fun invoke(market: MarketDomain) = repository.toggleFavoriteMarket(market)
 }

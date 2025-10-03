@@ -27,7 +27,7 @@ import com.rahim.coinnews.coindetail.presentation.component.MarketData
 import com.rahim.coinnews.coindetail.presentation.component.QuadLineChart
 import com.rahim.coinnews.coindetail.presentation.navigation.CoinDetailComponent
 import com.rahim.coinnews.coindetail.presentation.model.MarketPresentationLayerCoinDetail
-import com.rahim.coinnews.coindetail.presentation.previewProvider.MarketDetailStateProvider
+import com.rahim.coinnews.coindetail.presentation.previewProvider.CoinDetailStateProvider
 import com.rahim.coinnews.core.utils.LoadableComponent
 import com.rahim.coinnews.core.utils.LoadableData
 import com.rahim.coinnews.core.utils.use
@@ -213,7 +213,7 @@ fun formatNumber(number: Long?): String {
 @ThemePreviews
 @Composable
 private fun CoinDetailScreenPrev(
-    @PreviewParameter(MarketDetailStateProvider::class) marketDetailState: State,
+    @PreviewParameter(CoinDetailStateProvider::class) marketDetailState: CoinDetailComponent.State,
 ) {
     CoinNewsTheme {
         CoinDetailScreen(

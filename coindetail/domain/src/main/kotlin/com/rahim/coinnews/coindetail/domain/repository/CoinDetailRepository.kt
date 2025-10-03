@@ -1,17 +1,16 @@
 package com.rahim.coinnews.coindetail.domain.repository
 
-import com.rahim.coinnews.coindetail.domain.model.MarketChartDomainLayerCoinDetail
-import com.rahim.coinnews.coindetail.domain.model.MarketDetailDomainLayerCoinDetail
-import com.rahim.coinnews.coindetail.domain.model.MarketDomainLayerCoinDetail
+import com.rahim.coinnews.coindetail.domain.model.MarketChartDomain
+import com.rahim.coinnews.coindetail.domain.model.MarketDetailDomain
+import com.rahim.coinnews.coindetail.domain.model.MarketDomain
 import com.rahim.coinnews.core.utils.Errors
 import com.rahim.coinnews.core.utils.Resource
 import kotlinx.coroutines.flow.Flow
 
 interface CoinDetailRepository {
-    fun getMarketList(): Flow<List<MarketDomainLayerCoinDetail>>
-    fun getFavoriteMarketList(): Flow<List<MarketDomainLayerCoinDetail>>
-    suspend fun syncMarketList()
-    suspend fun toggleFavoriteMarket(oldMarket: MarketDomainLayerCoinDetail)
-    fun fetchChart(id: String): Flow<Resource<MarketChartDomainLayerCoinDetail, Errors>>
-    fun fetchDetail(id: String): Flow<Resource<MarketDetailDomainLayerCoinDetail, Errors>>
+    suspend fun getMarketList(): Flow<Resource<List<MarketDomain>, Errors>>
+    //    fun getFavoriteMarketList(): Flow<List<MarketDomain>>
+    //    suspend fun toggleFavoriteMarket(oldMarket: MarketDomain): Flow<List<MarketDomain>>
+    fun fetchChart(id: String): Flow<Resource<MarketChartDomain, Errors>>
+    fun fetchDetail(id: String): Flow<Resource<MarketDetailDomain, Errors>>
 }

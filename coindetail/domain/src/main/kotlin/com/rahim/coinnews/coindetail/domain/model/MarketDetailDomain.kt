@@ -7,11 +7,11 @@ import kotlinx.parcelize.Parcelize
 data class MarketDetailDomain(
     val id: String,
     val marketCapRank: Int,
-    val marketData: MarketDataDomainLayerCoinDetail?,
+    val marketData: MarketDataDomain?,
     val name: String,
 ) : Parcelable {
     @Parcelize
-    data class MarketDataDomainLayerCoinDetail(
+    data class MarketDataDomain(
         val high24hUSD: Double,
         val low24hUSD: Double,
         val marketCapUSD: Long,

@@ -118,7 +118,7 @@ class CoinDetailComponentImpl(
     private fun onFavoriteClick(market: MarketPresentationLayerCoinDetail) {
         scope.launch {
             onIO {
-                toggleFavoriteMarketListUseCase(market.toMarketDomainLayerCoinDetail())
+//                toggleFavoriteMarketListUseCase(market.toMarketDomainLayerCoinDetail())
             }
             toggleFavoriteState()
         }
