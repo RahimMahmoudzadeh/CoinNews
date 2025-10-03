@@ -37,10 +37,10 @@ import com.rahim.coinnews.library.designsystem.preview.ThemePreviews
 import com.rahim.coinnews.library.designsystem.theme.CoinNewsTheme
 
 @Composable
-fun MarketDetailRoute(
-    coinDetailComponent: CoinDetailComponent,
+fun CoinDetailRoute(
+    component: CoinDetailComponent,
 ) {
-    val (state, event) = use(component = coinDetailComponent)
+    val (state, event) = use(component = component)
 
 //    LaunchedEffect(key1 = market) {
 //        event.invoke(MarketDetailContract.Event.SetMarket(market = market))
@@ -49,7 +49,7 @@ fun MarketDetailRoute(
 //        event.invoke(MarketDetailContract.Event.GetMarketDetail(marketId = market.id))
 //    }
 
-    MarketDetailScreen(
+    CoinDetailScreen(
         marketDetailState = state,
         onFavoriteClick = {
             event.invoke(CoinDetailComponent.Event.OnFavoriteClick(market = it))
@@ -58,7 +58,7 @@ fun MarketDetailRoute(
 }
 
 @Composable
-private fun MarketDetailScreen(
+private fun CoinDetailScreen(
     modifier: Modifier = Modifier,
     marketDetailState: CoinDetailComponent.State,
     onFavoriteClick: (market: MarketPresentationLayerCoinDetail) -> Unit,
@@ -212,11 +212,11 @@ fun formatNumber(number: Long?): String {
 
 @ThemePreviews
 @Composable
-private fun MarketDetailScreenPrev(
+private fun CoinDetailScreenPrev(
     @PreviewParameter(MarketDetailStateProvider::class) marketDetailState: State,
 ) {
     CoinNewsTheme {
-        MarketDetailScreen(
+        CoinDetailScreen(
             marketDetailState = marketDetailState,
             onFavoriteClick = {},
         )

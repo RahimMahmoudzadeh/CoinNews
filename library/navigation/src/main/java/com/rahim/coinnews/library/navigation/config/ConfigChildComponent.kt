@@ -6,4 +6,5 @@ import kotlinx.serialization.Serializable
 sealed class ConfigChildComponent {
     data object Home : ConfigChildComponent()
     data object Favorites : ConfigChildComponent()
+    data object Detail : ConfigChildComponent()
 }
