@@ -14,7 +14,7 @@
 ![GitHub forks](https://img.shields.io/github/forks/RahimMahmoudzadeh/CoinNews)
 
 ## 📜 Description
-This repo is a playground about best practices, using updated libraries and solutions in the Android world with Decompose!
+This repository is a sample code for how to use Decompose.
 
 ## 🛠 Built With
 |  Architecture Pattern  |Decompose in Presentation Layer|
