@@ -26,6 +26,7 @@ import kotlin.coroutines.CoroutineContext
 class CoinDetailComponentImpl(
     componentContext: ComponentContext,
     mainContext: CoroutineContext,
+    private val coinId: String,
     private val getMarketChartUseCase: GetMarketChartUseCase,
     private val getMarketDetailUseCase: GetMarketDetailUseCase,
     private val toggleFavoriteMarketListUseCase: ToggleFavoriteMarketListUseCase,
