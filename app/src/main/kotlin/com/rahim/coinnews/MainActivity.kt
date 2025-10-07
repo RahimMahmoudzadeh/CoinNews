@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import com.arkivanov.decompose.defaultComponentContext
 import com.arkivanov.decompose.extensions.compose.subscribeAsState
 import com.rahim.coinnews.library.designsystem.theme.CoinNewsTheme
+import com.rahim.coinnews.library.navigation.config.ConfigChildComponent
 import com.rahim.coinnews.navigation.BottomNavigationBar
 import com.rahim.coinnews.navigation.RootComponentImpl
 
@@ -28,10 +29,12 @@ class MainActivity : ComponentActivity() {
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
                     bottomBar = {
-                        BottomNavigationBar(
-                            configuration = configurationState,
-                            component = root
-                        )
+                        if (configurationState is ConfigChildComponent.Home) {
+                            BottomNavigationBar(
+                                configuration = configurationState,
+                                component = root
+                            )
+                        }
                     }
                 ) { innerPadding ->
                     RootContent(component = root, modifier = Modifier.padding(innerPadding))
