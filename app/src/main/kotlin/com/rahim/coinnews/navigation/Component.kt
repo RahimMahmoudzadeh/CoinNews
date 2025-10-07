@@ -42,13 +42,13 @@ fun BottomNavigationBar(
             icon = {
                 Icon(
                     imageVector = ImageVector.vectorResource(BottomNavItem.Home.iconId),
-                    contentDescription = BottomNavItem.Favorite.route,
+                    contentDescription = BottomNavItem.Home.route,
                     modifier = Modifier.size(22.dp)
                 )
             },
             label = {
                 if (configuration is ConfigChildComponent.Home)
-                    Text(text = stringResource(BottomNavItem.Favorite.title), fontSize = 12.sp)
+                    Text(text = stringResource(BottomNavItem.Home.title), fontSize = 12.sp)
             },
             selected = configuration is ConfigChildComponent.Home,
         )
@@ -65,13 +65,13 @@ fun BottomNavigationBar(
             icon = {
                 Icon(
                     imageVector = ImageVector.vectorResource(BottomNavItem.Favorite.iconId),
-                    contentDescription = BottomNavItem.Home.route,
+                    contentDescription = BottomNavItem.Favorite.route,
                     modifier = Modifier.size(22.dp)
                 )
             },
             label = {
                 if (configuration is ConfigChildComponent.Favorites)
-                    Text(text = stringResource(BottomNavItem.Home.title), fontSize = 12.sp)
+                    Text(text = stringResource(BottomNavItem.Favorite.title), fontSize = 12.sp)
             },
             selected = configuration is ConfigChildComponent.Favorites,
         )
