@@ -2,6 +2,7 @@ plugins {
     libs.plugins.coinNews.run {
         alias(library)
         alias(koin)
+        alias(room)
     }
 }
 
