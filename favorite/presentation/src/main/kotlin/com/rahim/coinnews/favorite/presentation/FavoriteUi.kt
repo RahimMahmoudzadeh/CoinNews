@@ -17,7 +17,7 @@ import com.rahim.coinnews.core.utils.extentian.roundToTwoDecimalPlaces
 import com.rahim.coinnews.core.utils.isLoading
 import com.rahim.coinnews.core.utils.use
 import com.rahim.coinnews.favorite.presentation.component.FavoriteItemUi
-import com.rahim.coinnews.favorite.presentation.model.MarketPresentationLayer
+import com.rahim.coinnews.favorite.presentation.model.FavoriteCoinPresentationLayer
 import com.rahim.coinnews.favorite.presentation.navigation.FavoriteComponent
 import com.rahim.coinnews.library.designsystem.R
 import com.rahim.coinnews.library.designsystem.component.EmptyStateAnimation
@@ -42,8 +42,8 @@ private fun FavoriteScreen(
     modifier: Modifier = Modifier,
     state: FavoriteComponent.State,
     onRefresh: () -> Unit,
-    onNavigateToDetailScreen: (MarketPresentationLayer) -> Unit,
-    onFavoriteClick: (MarketPresentationLayer) -> Unit,
+    onNavigateToDetailScreen: (FavoriteCoinPresentationLayer) -> Unit,
+    onFavoriteClick: (FavoriteCoinPresentationLayer) -> Unit,
 ) {
 
     val refreshState = rememberPullRefreshState(
@@ -106,7 +106,7 @@ private fun FavoriteScreen(
 @Composable
 fun MarketListItem(
     modifier: Modifier,
-    market: MarketPresentationLayer,
+    market: FavoriteCoinPresentationLayer,
     onItemClick: () -> Unit,
     onFavoriteClick: () -> Unit,
 ) {

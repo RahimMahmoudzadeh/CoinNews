@@ -1,4 +1,4 @@
-package com.rahim.coinnews.library.designsystem.component
+package com.rahim.coinnews.home.presentation.component
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.spring
@@ -44,6 +44,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import coil3.compose.rememberAsyncImagePainter
 import com.rahim.coinnews.library.designsystem.R
+import com.rahim.coinnews.library.designsystem.component.DismissBackgroundSwipe
+import com.rahim.coinnews.library.designsystem.component.FavoriteIcon
+import com.rahim.coinnews.library.designsystem.component.shimmerEffect
 import com.rahim.coinnews.library.designsystem.preview.ThemePreviews
 import com.rahim.coinnews.library.designsystem.theme.CoinNewsTheme
 import com.rahim.coinnews.library.designsystem.theme.darkDownTrendRed
@@ -62,7 +65,6 @@ fun MarketItemUi(
     price: String,
     priceChangePercentage24h: String,
     isFavorite: Boolean,
-    showFavoriteList: Boolean,
     onItemClick: () -> Unit,
     onFavoriteClick: () -> Unit,
 ) {
@@ -83,46 +85,17 @@ fun MarketItemUi(
         initialValue = SwipeToDismissBoxValue.Settled,
     )
 
-    if (showFavoriteList) {
-        AnimatedVisibility(visible = show, exit = fadeOut(spring())) {
-            SwipeToDismissBox(
-                state = dismissState,
-                enableDismissFromStartToEnd = true,
-                enableDismissFromEndToStart = false,
-                backgroundContent = {
-                    DismissBackgroundSwipe(
-                        modifier = Modifier,
-                        dismissState = dismissState,
-                    )
-                },
-                content = {
-                    MarketItemCard(
-                        modifier = modifier,
-                        name = name,
-                        symbol = symbol,
-                        urlToImage = urlToImage,
-                        price = price,
-                        priceChangePercentage24h = priceChangePercentage24h,
-                        isFavorite = isFavorite,
-                        onItemClick = { onItemClick() },
-                        onFavoriteClick = { onFavoriteClick() },
-                    )
-                },
-            )
-        }
-    } else {
-        MarketItemCard(
-            modifier = modifier,
-            name = name,
-            symbol = symbol,
-            urlToImage = urlToImage,
-            price = price,
-            priceChangePercentage24h = priceChangePercentage24h,
-            isFavorite = isFavorite,
-            onItemClick = { onItemClick() },
-            onFavoriteClick = { onFavoriteClick() },
-        )
-    }
+    MarketItemCard(
+        modifier = modifier,
+        name = name,
+        symbol = symbol,
+        urlToImage = urlToImage,
+        price = price,
+        priceChangePercentage24h = priceChangePercentage24h,
+        isFavorite = isFavorite,
+        onItemClick = { onItemClick() },
+        onFavoriteClick = { onFavoriteClick() },
+    )
 
     LaunchedEffect(show) {
         if (show.not()) {
@@ -243,7 +216,6 @@ private fun MarketItemUiPrev() {
                 price = "100000",
                 priceChangePercentage24h = "100000",
                 isFavorite = false,
-                showFavoriteList = false,
                 onItemClick = {},
                 onFavoriteClick = {},
             )
