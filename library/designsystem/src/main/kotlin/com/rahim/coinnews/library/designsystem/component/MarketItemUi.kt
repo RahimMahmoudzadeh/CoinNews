@@ -1,4 +1,4 @@
-package com.rahim.coinnews.home.presentation.component
+package com.rahim.coinnews.library.designsystem.component
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.spring
@@ -44,9 +44,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import coil3.compose.rememberAsyncImagePainter
 import com.rahim.coinnews.library.designsystem.R
-import com.rahim.coinnews.library.designsystem.component.DismissBackgroundSwipe
-import com.rahim.coinnews.library.designsystem.component.FavoriteIcon
-import com.rahim.coinnews.library.designsystem.component.shimmerEffect
 import com.rahim.coinnews.library.designsystem.preview.ThemePreviews
 import com.rahim.coinnews.library.designsystem.theme.CoinNewsTheme
 import com.rahim.coinnews.library.designsystem.theme.darkDownTrendRed

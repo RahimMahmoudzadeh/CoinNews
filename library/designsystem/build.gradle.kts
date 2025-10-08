@@ -12,5 +12,8 @@ dependencies{
     projects.run {
         implementation(core.utils)
     }
+    libs.bundles.run{
+        implementation(coil)
+    }
 }
 
