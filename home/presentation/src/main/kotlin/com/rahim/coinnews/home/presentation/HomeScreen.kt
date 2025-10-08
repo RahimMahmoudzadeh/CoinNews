@@ -25,10 +25,10 @@ import com.rahim.coinnews.library.designsystem.component.refresh.pullRefresh
 import com.rahim.coinnews.library.designsystem.component.refresh.rememberPullRefreshState
 import com.rahim.coinnews.library.designsystem.preview.ThemePreviews
 import com.rahim.coinnews.library.designsystem.theme.CoinNewsTheme
-import com.rahim.coinnews.home.presentation.component.MarketItemUi
 import com.rahim.coinnews.home.presentation.model.MarketPresentationLayer
 import com.rahim.coinnews.home.presentation.navigation.HomeComponent
 import com.rahim.coinnews.home.presentation.previewProvider.HomeStateProvider
+import com.rahim.coinnews.library.designsystem.component.MarketItemUi
 import com.rahim.coinnews.library.designsystem.widget.ErrorView
 
 
@@ -55,6 +55,7 @@ fun HomeScreenRoute(
 
 @Composable
 internal fun HomeScreenScreen(
+    modifier: Modifier = Modifier,
     state: HomeComponent.State,
     showFavoriteList: Boolean,
     onNavigateToDetailScreen: (market: MarketPresentationLayer) -> Unit,
@@ -67,7 +68,7 @@ internal fun HomeScreenScreen(
     )
     Box(
         modifier =
-            Modifier
+            modifier
                 .fillMaxWidth()
                 .pullRefresh(refreshState),
     ) {
