@@ -28,7 +28,7 @@ import com.rahim.coinnews.library.designsystem.theme.CoinNewsTheme
 import com.rahim.coinnews.home.presentation.model.MarketPresentationLayer
 import com.rahim.coinnews.home.presentation.navigation.HomeComponent
 import com.rahim.coinnews.home.presentation.previewProvider.HomeStateProvider
-import com.rahim.coinnews.library.designsystem.component.MarketItemUi
+import com.rahim.coinnews.home.presentation.component.MarketItemUi
 import com.rahim.coinnews.library.designsystem.widget.ErrorView
 
 
@@ -43,7 +43,6 @@ fun HomeScreenRoute(
         onNavigateToDetailScreen = {
             event(HomeComponent.Event.OnNavigateDetailScreen(it.id))
         },
-        showFavoriteList = false,
         onFavoriteClick = { market ->
             event.invoke(HomeComponent.Event.OnFavoriteClick(market = market))
         },
@@ -57,7 +56,6 @@ fun HomeScreenRoute(
 internal fun HomeScreenScreen(
     modifier: Modifier = Modifier,
     state: HomeComponent.State,
-    showFavoriteList: Boolean,
     onNavigateToDetailScreen: (market: MarketPresentationLayer) -> Unit,
     onFavoriteClick: (market: MarketPresentationLayer) -> Unit,
     onRefresh: () -> Unit,
@@ -85,7 +83,7 @@ internal fun HomeScreenScreen(
                     enter = fadeIn(),
                     exit = fadeOut(),
                 ) {
-                    if (data.isEmpty() && state.showFavoriteList) {
+                    if (data.isEmpty()) {
                         EmptyStateAnimation(
                             lottieCompositionSpec = LottieCompositionSpec.RawRes(
                                 R.raw.empty_state_animation,
@@ -100,7 +98,6 @@ internal fun HomeScreenScreen(
                                 MarketListItem(
                                     modifier = Modifier.fillMaxWidth(),
                                     market = market,
-                                    showFavoriteList = showFavoriteList,
                                     onItemClick = {
                                         onNavigateToDetailScreen(market)
                                     },
@@ -124,7 +121,6 @@ internal fun HomeScreenScreen(
 fun MarketListItem(
     modifier: Modifier,
     market: MarketPresentationLayer,
-    showFavoriteList: Boolean,
     onItemClick: () -> Unit,
     onFavoriteClick: () -> Unit,
 ) {
@@ -137,7 +133,6 @@ fun MarketListItem(
             price = currentPrice.toString(),
             priceChangePercentage24h = priceChangePercentage24h.roundToTwoDecimalPlaces(),
             isFavorite = isFavorite,
-            showFavoriteList = showFavoriteList,
             onItemClick = onItemClick,
             onFavoriteClick = onFavoriteClick,
         )
@@ -154,7 +149,6 @@ private fun MarketListScreenPrev(
         Surface {
             HomeScreenScreen(
                 state = homeState,
-                showFavoriteList = false,
                 onNavigateToDetailScreen = {},
                 onFavoriteClick = {},
                 onRefresh = {},

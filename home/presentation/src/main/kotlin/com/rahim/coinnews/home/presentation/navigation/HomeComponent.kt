@@ -19,6 +19,5 @@ interface HomeComponent :
     @Immutable
     data class State(
         val marketList: LoadableData<PersistentList<MarketPresentationLayer>> = LoadableData.Initial,
-        val showFavoriteList: Boolean = false,
     )
 }
