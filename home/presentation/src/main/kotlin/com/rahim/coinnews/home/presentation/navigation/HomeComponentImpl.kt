@@ -48,17 +48,7 @@ class HomeComponentImpl(
 //            onFavoriteClick(marketModel = event.market)
         }
 
-        is HomeComponent.Event.OnSetShowFavoriteList -> onSetShowFavoriteList(
-            showFavoriteList = event.showFavoriteList,
-        )
-
         is HomeComponent.Event.OnNavigateDetailScreen -> onNavigateDetailScreen(event.idCoin)
-    }
-
-    private fun onSetShowFavoriteList(showFavoriteList: Boolean) {
-        _state.update {
-            it.copy(showFavoriteList = showFavoriteList)
-        }
     }
 
     private fun getMarketList() {
