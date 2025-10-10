@@ -27,7 +27,20 @@ This repository is a sample code for how to use Decompose.
 <br>
 
 ## :iphone: Screenshots (Dark and Light Theme)
-### Coming soon
+<table style="width:100%">
+  <tr>
+    <th>Home Screen</th>
+    <th>Favorite Screen</th>
+    <th>Detail Screen</th>
+  </tr>
+  <tr>
+    <td><img src = "asset/screenshot_home.png" width=240/></td>
+    <td><img src = "asset/screenshot_favorite.png" width=240/></td>
+    <td><img src = "asset/screenshot_detail.png" width=240/></td>
+  </tr>
+</table>
+<br>
+
 
 ## 🤝 Contribution
 Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
