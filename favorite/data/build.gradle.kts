@@ -13,5 +13,6 @@ dependencies {
     projects.run {
         implementation(favorite.domain)
         implementation(core.utils)
+        implementation(core.db)
     }
 }
