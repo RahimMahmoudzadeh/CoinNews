@@ -29,7 +29,7 @@ class MainActivity : ComponentActivity() {
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
                     bottomBar = {
-                        if (configurationState is ConfigChildComponent.Home) {
+                        if (configurationState !is ConfigChildComponent.Detail) {
                             BottomNavigationBar(
                                 configuration = configurationState,
                                 component = root
