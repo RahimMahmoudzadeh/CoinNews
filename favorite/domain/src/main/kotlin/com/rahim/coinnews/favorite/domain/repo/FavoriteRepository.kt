@@ -5,5 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface FavoriteRepository {
     fun getFavoriteMarketList(): Flow<List<MarketDomain>>
-    suspend fun toggleFavoriteMarket(marketDomain: MarketDomain)
+    suspend fun saveFavoriteMarket(marketDomain: MarketDomain)
 }

@@ -13,7 +13,7 @@ class FavoriteRepositoryImpl(private val favoriteDao: FavoriteDao) : FavoriteRep
         favoriteDao.getFavoriteMarketList()
             .map { favoritesEntity -> favoritesEntity.map { favoriteEntity -> favoriteEntity.toMarketDomain() } }
 
-    override suspend fun toggleFavoriteMarket(marketDomain: MarketDomain) {
+    override suspend fun saveFavoriteMarket(marketDomain: MarketDomain) {
         val favoriteEntity = marketDomain.toFavoriteEntity()
         favoriteDao.insertMarket(favoriteEntity)
     }

@@ -13,7 +13,10 @@ import com.rahim.coinnews.coindetail.domain.useCase.GetMarketChartUseCase
 import com.rahim.coinnews.coindetail.domain.useCase.GetMarketDetailUseCase
 import com.rahim.coinnews.coindetail.presentation.navigation.CoinDetailComponent
 import com.rahim.coinnews.coindetail.presentation.navigation.CoinDetailComponentImpl
+import com.rahim.coinnews.domain.useCase.DeleteFavoriteUseCase
 import com.rahim.coinnews.domain.useCase.GetMarketsUseCase
+import com.rahim.coinnews.domain.useCase.SaveFavoriteUseCase
+import com.rahim.coinnews.favorite.domain.useCase.GetFavoritesUseCase
 import com.rahim.coinnews.favorite.presentation.navigation.FavoriteComponent
 import com.rahim.coinnews.favorite.presentation.navigation.FavoriteComponentImpl
 import com.rahim.coinnews.library.navigation.config.ConfigChildComponent
@@ -45,6 +48,8 @@ class RootComponentImpl(componentContext: ComponentContext) : RootComponent,
     }
 
     private val getMarketsUseCase: GetMarketsUseCase = get()
+    private val saveFavoriteUseCase: SaveFavoriteUseCase = get()
+    private val deleteFavoriteUseCase: DeleteFavoriteUseCase = get()
 
     override val stack: Value<ChildStack<*, RootComponent.ChildStack>> = childStack(
         source = navigation,
@@ -60,6 +65,8 @@ class RootComponentImpl(componentContext: ComponentContext) : RootComponent,
             componentContext = componentContext,
             mainContext = Dispatchers.Main,
             getMarketsUseCase = getMarketsUseCase,
+            saveFavoriteUseCase = saveFavoriteUseCase,
+            deleteFavoriteUseCase = deleteFavoriteUseCase,
             onNavigateDetailScreen = { coinId ->
                 navigation.pushNew(configuration = ConfigChildComponent.Detail(coinId = coinId))
             }
@@ -80,10 +87,13 @@ class RootComponentImpl(componentContext: ComponentContext) : RootComponent,
             coinId = coinId
         )
 
+    private val getFavoritesUseCase: GetFavoritesUseCase = get()
+
     private fun favoriteComponent(componentContext: ComponentContext): FavoriteComponent =
         FavoriteComponentImpl(
             componentContext = componentContext,
             mainContext = Dispatchers.Main,
+            getFavoritesUseCase = getFavoritesUseCase
         )
 
     override fun onTabClick(tab: ConfigChildComponent) {
