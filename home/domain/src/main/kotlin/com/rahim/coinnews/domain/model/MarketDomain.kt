@@ -1,6 +1,6 @@
 package com.rahim.coinnews.domain.model
 
-data class MarketDomainLayer(
+data class MarketDomain(
     val id: String,
     val name: String,
     val symbol: String,

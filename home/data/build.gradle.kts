@@ -14,6 +14,7 @@ dependencies {
         implementation(home.domain)
         implementation(core.network)
         implementation(core.utils)
+        implementation(core.db)
     }
     libs.run {
         implementation(presianDate)

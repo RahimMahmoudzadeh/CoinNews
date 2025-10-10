@@ -1,15 +1,13 @@
 package com.rahim.coinnews.home.data.repository
 
-import android.util.Log
+import com.rahim.coinnews.core.db.favorite.dao.FavoriteDao
 import com.rahim.coinnews.core.utils.Errors
 import com.rahim.coinnews.core.utils.Resource
-import com.rahim.coinnews.domain.model.MarketDomainLayer
+import com.rahim.coinnews.domain.model.MarketDomain
 import com.rahim.coinnews.domain.repository.HomeRepository
 import com.rahim.coinnews.home.data.api.HomeApi
+import com.rahim.coinnews.home.data.mapper.toFavoriteEntity
 import com.rahim.coinnews.home.data.mapper.toMarketDomainLayer
-import com.rahim.coinnews.network.mapMessageStatusCode
-import com.rahim.coinnews.network.onError
-import com.rahim.coinnews.network.onException
 import com.rahim.coinnews.network.statusCode
 import com.rahim.coinnews.network.suspendMap
 import com.rahim.coinnews.network.suspendOnError
@@ -17,15 +15,11 @@ import com.rahim.coinnews.network.suspendOnException
 import com.rahim.coinnews.network.suspendOnSuccess
 import kotlinx.collections.immutable.PersistentList
 import kotlinx.collections.immutable.toPersistentList
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.withContext
-import kotlin.code
 
-class HomeRepositoryImpl(private val marketApi: HomeApi) : HomeRepository {
-    override fun getMarkets(): Flow<Resource<PersistentList<MarketDomainLayer>, Errors>> =
+class HomeRepositoryImpl(private val marketApi: HomeApi,private val favoriteDao: FavoriteDao) : HomeRepository {
+    override fun getMarkets(): Flow<Resource<PersistentList<MarketDomain>, Errors>> =
         flow {
             marketApi.getMarkets(
                 "usd",
@@ -48,4 +42,12 @@ class HomeRepositoryImpl(private val marketApi: HomeApi) : HomeRepository {
                 }
             }
         }
+
+    override suspend fun saveFavoriteMarket(marketDomain: MarketDomain) {
+        favoriteDao.insertMarket(marketDomain.toFavoriteEntity())
+    }
+
+    override suspend fun deleteFavoriteMarket(marketDomain: MarketDomain) {
+        favoriteDao.delete(marketDomain.toFavoriteEntity())
+    }
 }
