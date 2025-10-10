@@ -26,7 +26,7 @@ This repository is a sample code for how to use Decompose in Android project.
 | :thread: Asynchronous Work     | [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html)|
 <br>
 
-## :iphone: Screenshots (Dark and Light Theme)
+## :iphone: Screenshots
 <table style="width:100%">
   <tr>
     <th>Home Screen</th>
