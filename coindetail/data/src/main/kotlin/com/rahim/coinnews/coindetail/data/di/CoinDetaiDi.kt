@@ -9,7 +9,7 @@ import com.rahim.coinnews.coindetail.domain.useCase.GetMarketDetailUseCase
 import com.rahim.coinnews.coindetail.domain.useCase.ToggleFavoriteMarketListUseCase
 import org.koin.dsl.module
 
-val coinDetailDi= module {
+val coinDetailModule= module {
     single<CoinDetailRepository> { CoinDetailRepositoryImpl(get()) }
     single<CoinDetailApi> { CoinDetailApiImpl(get()) }
     single { GetMarketChartUseCase(get()) }
