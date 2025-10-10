@@ -6,6 +6,7 @@ import com.rahim.coinnews.coindetail.data.model.MarketResponse
 import com.rahim.coinnews.coindetail.domain.model.MarketChartDomain
 import com.rahim.coinnews.coindetail.domain.model.MarketDetailDomain
 import com.rahim.coinnews.coindetail.domain.model.MarketDomain
+import com.rahim.coinnews.core.db.favorite.model.FavoriteEntity
 import kotlin.collections.get
 import kotlin.text.toLong
 
@@ -36,3 +37,13 @@ fun MarketResponse.toMarketDomain(): MarketDomain = MarketDomain(
     priceChangePercentage24h = this.priceChangePercentage24h,
     imageUrl = this.imageUrl,
 )
+
+fun MarketDomain.toFavoriteEntity(): FavoriteEntity =
+    FavoriteEntity(
+        id = this.id,
+        name = this.name,
+        symbol = this.symbol,
+        currentPrice = this.currentPrice,
+        priceChangePercentage24h = this.priceChangePercentage24h,
+        imageUrl = this.imageUrl
+    )

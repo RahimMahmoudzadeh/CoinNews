@@ -14,5 +14,6 @@ dependencies {
         implementation(coindetail.domain)
         implementation(core.network)
         implementation(core.utils)
+        implementation(core.db)
     }
 }

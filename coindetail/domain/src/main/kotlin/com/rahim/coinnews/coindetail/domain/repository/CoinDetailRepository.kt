@@ -9,8 +9,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface CoinDetailRepository {
     suspend fun getMarketList(): Flow<Resource<List<MarketDomain>, Errors>>
-    //    fun getFavoriteMarketList(): Flow<List<MarketDomain>>
-    //    suspend fun toggleFavoriteMarket(oldMarket: MarketDomain): Flow<List<MarketDomain>>
     fun fetchChart(id: String): Flow<Resource<MarketChartDomain, Errors>>
     fun fetchDetail(id: String): Flow<Resource<MarketDetailDomain, Errors>>
 }

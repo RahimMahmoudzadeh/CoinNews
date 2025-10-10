@@ -1,6 +1,5 @@
 package com.rahim.coinnews.coindetail.data.repository
 
-import android.util.Log
 import com.rahim.coinnews.coindetail.data.api.CoinDetailApi
 import com.rahim.coinnews.coindetail.data.mapper.toMarketChartDomain
 import com.rahim.coinnews.coindetail.data.mapper.toMarketDetailDomain
@@ -12,8 +11,6 @@ import com.rahim.coinnews.coindetail.domain.repository.CoinDetailRepository
 import com.rahim.coinnews.core.utils.Errors
 import com.rahim.coinnews.core.utils.Resource
 import com.rahim.coinnews.network.mapMessageStatusCode
-import com.rahim.coinnews.network.onError
-import com.rahim.coinnews.network.onException
 import com.rahim.coinnews.network.statusCode
 import com.rahim.coinnews.network.suspendMap
 import com.rahim.coinnews.network.suspendOnError
@@ -25,9 +22,6 @@ import kotlinx.coroutines.flow.flow
 class CoinDetailRepositoryImpl(
     private val api: CoinDetailApi,
 ) : CoinDetailRepository {
-
-//    override fun getFavoriteMarketList(): Flow<List<MarketDomain>> =
-//        dao.getFavoriteMarketList().map { list -> list.map { it.toMarket() } }
 
     override suspend fun getMarketList(): Flow<Resource<List<MarketDomain>, Errors>> = flow {
         api.getMarkets(
@@ -55,11 +49,6 @@ class CoinDetailRepositoryImpl(
             suspendMap { emit(Resource.Error(Errors.ExceptionError(it.message, throwable))) }
         }
     }
-
-//    override suspend fun toggleFavoriteMarket(oldMarket: MarketDomain): Flow<List<MarketDomain>> {
-//        val marketEntity = oldMarket.copy(isFavorite = !oldMarket.isFavorite)
-////        dao.insertMarket(marketEntity)
-//    }
 
     override fun fetchChart(id: String): Flow<Resource<MarketChartDomain, Errors>> = flow {
         val chart = api.getMarketChart(id, "usd", 1)

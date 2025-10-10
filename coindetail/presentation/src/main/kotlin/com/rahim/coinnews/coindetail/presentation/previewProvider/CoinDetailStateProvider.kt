@@ -28,12 +28,12 @@ private fun market() = MarketPresentationLayerCoinDetail(
 class CoinDetailStateProvider : PreviewParameterProvider<CoinDetailComponent.State> {
     override val values: Sequence<CoinDetailComponent.State> = sequenceOf(
         CoinDetailComponent.State(
-            market = LoadableData.Loading,
+//            market = LoadableData.Loading,
             marketChart = LoadableData.Loading,
             marketDetail = LoadableData.Loading,
         ),
         CoinDetailComponent.State(
-            market = LoadableData.Loaded(data = marketList[0]),
+//            market = LoadableData.Loaded(data = marketList[0]),
             marketChart = LoadableData.Loaded(
                 data = MarketChartPresentationLayerCoinDetail(
                     prices = persistentListOf(
@@ -52,12 +52,12 @@ class CoinDetailStateProvider : PreviewParameterProvider<CoinDetailComponent.Sta
             ),
         ),
         CoinDetailComponent.State(
-            market = LoadableData.Error(
-                error = Errors.ExceptionError(
-                    message = "some exception",
-                    throwable = Throwable("some exception"),
-                ),
-            ),
+//            market = LoadableData.Error(
+//                error = Errors.ExceptionError(
+//                    message = "some exception",
+//                    throwable = Throwable("some exception"),
+//                ),
+//            ),
             marketChart = LoadableData.Error(
                 error = Errors.ExceptionError(
                     message = "some exception",

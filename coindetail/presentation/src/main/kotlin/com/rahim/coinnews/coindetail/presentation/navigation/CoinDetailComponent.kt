@@ -12,15 +12,10 @@ interface CoinDetailComponent :
 
     @Immutable
     sealed class Event {
-        data class SetMarket(val market: MarketPresentationLayerCoinDetail) : Event()
-        data class GetMarketChart(val marketId: String) : Event()
-        data class GetMarketDetail(val marketId: String) : Event()
-        data class OnFavoriteClick(val market: MarketPresentationLayerCoinDetail) : Event()
     }
 
     @Immutable
     data class State(
-        val market: LoadableData<MarketPresentationLayerCoinDetail> = LoadableData.Initial,
         val marketChart: LoadableData<MarketChartPresentationLayerCoinDetail> = LoadableData.Initial,
         val marketDetail: LoadableData<MarketDetailPresentationLayerCoinDetail> = LoadableData.Initial,
     )

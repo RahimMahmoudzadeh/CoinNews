@@ -11,7 +11,6 @@ import com.arkivanov.decompose.router.stack.pushNew
 import com.arkivanov.decompose.value.Value
 import com.rahim.coinnews.coindetail.domain.useCase.GetMarketChartUseCase
 import com.rahim.coinnews.coindetail.domain.useCase.GetMarketDetailUseCase
-import com.rahim.coinnews.coindetail.domain.useCase.ToggleFavoriteMarketListUseCase
 import com.rahim.coinnews.coindetail.presentation.navigation.CoinDetailComponent
 import com.rahim.coinnews.coindetail.presentation.navigation.CoinDetailComponentImpl
 import com.rahim.coinnews.domain.useCase.GetMarketsUseCase
@@ -66,7 +65,6 @@ class RootComponentImpl(componentContext: ComponentContext) : RootComponent,
 
     private val getMarketChartUseCase: GetMarketChartUseCase = get()
     private val getMarketDetailUseCase: GetMarketDetailUseCase = get()
-    private val toggleFavoriteMarketListUseCase: ToggleFavoriteMarketListUseCase = get()
 
     private fun coinDetailComponent(componentContext: ComponentContext,coinId: String): CoinDetailComponent =
         CoinDetailComponentImpl(
@@ -74,7 +72,6 @@ class RootComponentImpl(componentContext: ComponentContext) : RootComponent,
             mainContext = Dispatchers.Main,
             getMarketChartUseCase = getMarketChartUseCase,
             getMarketDetailUseCase = getMarketDetailUseCase,
-            toggleFavoriteMarketListUseCase = toggleFavoriteMarketListUseCase,
             coinId = coinId
         )
 

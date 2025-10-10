@@ -5,9 +5,9 @@ import com.arkivanov.decompose.value.MutableValue
 import com.arkivanov.decompose.value.Value
 import com.arkivanov.decompose.value.update
 import com.arkivanov.essenty.lifecycle.coroutines.coroutineScope
+import com.arkivanov.essenty.lifecycle.doOnCreate
 import com.rahim.coinnews.coindetail.domain.useCase.GetMarketChartUseCase
 import com.rahim.coinnews.coindetail.domain.useCase.GetMarketDetailUseCase
-import com.rahim.coinnews.coindetail.domain.useCase.ToggleFavoriteMarketListUseCase
 import com.rahim.coinnews.coindetail.presentation.mapper.toMarketChartPresentationLayerCoinDetail
 import com.rahim.coinnews.coindetail.presentation.mapper.toMarketDetailPresentationLayerCoinDetail
 import com.rahim.coinnews.coindetail.presentation.mapper.toMarketDomainLayerCoinDetail
@@ -29,7 +29,6 @@ class CoinDetailComponentImpl(
     private val coinId: String,
     private val getMarketChartUseCase: GetMarketChartUseCase,
     private val getMarketDetailUseCase: GetMarketDetailUseCase,
-    private val toggleFavoriteMarketListUseCase: ToggleFavoriteMarketListUseCase,
 ) :
     ComponentContext by componentContext,
     CoinDetailComponent {
@@ -39,11 +38,15 @@ class CoinDetailComponentImpl(
     private val _state = MutableValue(CoinDetailComponent.State())
     override val state: Value<CoinDetailComponent.State> = _state
 
-    override fun event(event: CoinDetailComponent.Event) = when (event) {
-        is CoinDetailComponent.Event.SetMarket -> setMarket(market = event.market)
-        is CoinDetailComponent.Event.OnFavoriteClick -> onFavoriteClick(market = event.market)
-        is CoinDetailComponent.Event.GetMarketChart -> getMarketChart(id = event.marketId)
-        is CoinDetailComponent.Event.GetMarketDetail -> getMarketDetail(id = event.marketId)
+    init {
+        lifecycle.doOnCreate {
+            getMarketDetail(id = coinId)
+            getMarketChart(id = coinId)
+        }
+    }
+
+    override fun event(event: CoinDetailComponent.Event){
+
     }
 
     private fun getMarketDetail(id: String) {
@@ -78,12 +81,6 @@ class CoinDetailComponentImpl(
         }.launchIn(scope)
     }
 
-    private fun setMarket(market: MarketPresentationLayerCoinDetail) {
-        _state.update {
-            it.copy(market = LoadableData.Loaded(market))
-        }
-    }
-
     private fun getMarketChart(id: String) {
         _state.update {
             it.copy(marketChart = LoadableData.Loading)
@@ -114,21 +111,5 @@ class CoinDetailComponentImpl(
                 )
             }
         }.launchIn(scope)
-    }
-
-    private fun onFavoriteClick(market: MarketPresentationLayerCoinDetail) {
-        scope.launch {
-            onIO {
-//                toggleFavoriteMarketListUseCase(market.toMarketDomainLayerCoinDetail())
-            }
-            toggleFavoriteState()
-        }
-    }
-
-    private fun toggleFavoriteState() {
-        val market = (_state.value.market as LoadableData.Loaded).data
-        val isFavorite = market.isFavorite
-        val newMarket = LoadableData.Loaded(market.copy(isFavorite = isFavorite))
-        _state.update { it.copy(market = newMarket) }
     }
 }

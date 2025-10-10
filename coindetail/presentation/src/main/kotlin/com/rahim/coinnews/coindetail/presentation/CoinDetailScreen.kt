@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import coil3.compose.rememberAsyncImagePainter
 import com.rahim.coinnews.coindetail.presentation.component.MarketData
 import com.rahim.coinnews.coindetail.presentation.component.QuadLineChart
+import com.rahim.coinnews.coindetail.presentation.model.MarketDetailPresentationLayerCoinDetail
 import com.rahim.coinnews.coindetail.presentation.navigation.CoinDetailComponent
 import com.rahim.coinnews.coindetail.presentation.model.MarketPresentationLayerCoinDetail
 import com.rahim.coinnews.coindetail.presentation.previewProvider.CoinDetailStateProvider
@@ -41,19 +42,8 @@ fun CoinDetailRoute(
     component: CoinDetailComponent,
 ) {
     val (state, event) = use(component = component)
-
-//    LaunchedEffect(key1 = market) {
-//        event.invoke(MarketDetailContract.Event.SetMarket(market = market))
-//        // TODO: Move into viewModel?
-//        event.invoke(MarketDetailContract.Event.GetMarketChart(marketId = market.id))
-//        event.invoke(MarketDetailContract.Event.GetMarketDetail(marketId = market.id))
-//    }
-
     CoinDetailScreen(
         marketDetailState = state,
-        onFavoriteClick = {
-            event.invoke(CoinDetailComponent.Event.OnFavoriteClick(market = it))
-        },
     )
 }
 
@@ -61,17 +51,16 @@ fun CoinDetailRoute(
 private fun CoinDetailScreen(
     modifier: Modifier = Modifier,
     marketDetailState: CoinDetailComponent.State,
-    onFavoriteClick: (market: MarketPresentationLayerCoinDetail) -> Unit,
 ) {
     Box(
         modifier = modifier.fillMaxSize(),
     ) {
         Column(
-            modifier = modifier
+            modifier = Modifier
                 .fillMaxSize(),
         ) {
             TopAppBar(
-                market = marketDetailState.market,
+                market = marketDetailState.marketDetail,
             )
             QuadLineChart(
                 loadableData = marketDetailState.marketChart
@@ -80,42 +69,12 @@ private fun CoinDetailScreen(
                 loadableData = marketDetailState.marketDetail,
             )
         }
-        MarketDetailFloatingActionButton(
-            modifier = Modifier
-                .align(Alignment.BottomEnd)
-                .padding(16.dp),
-            loadableData = marketDetailState.market,
-            onFavoriteClick = onFavoriteClick,
-        )
     }
 }
 
 @Composable
-private fun MarketDetailFloatingActionButton(
-    modifier: Modifier = Modifier,
-    loadableData: LoadableData<MarketPresentationLayerCoinDetail>,
-    onFavoriteClick: (market: MarketPresentationLayerCoinDetail) -> Unit,
-) {
-    LoadableComponent(
-        loadableData = loadableData,
-        loading = {},
-        loaded = { data ->
-            FloatingActionButton(
-                modifier = modifier,
-                onClick = {},
-            ) {
-                FavoriteIcon(isFavorite = data.isFavorite) {
-                    onFavoriteClick(data)
-                }
-            }
-        },
-        error = { error -> },
-    )
-}
-
-@Composable
 private fun TopAppBar(
-    market: LoadableData<MarketPresentationLayerCoinDetail>,
+    market: LoadableData<MarketDetailPresentationLayerCoinDetail>,
 ) {
     LoadableComponent(
         loadableData = market,
@@ -131,7 +90,7 @@ private fun TopAppBar(
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     Image(
-                        painter = rememberAsyncImagePainter(model = data.imageUrl),
+                        painter = rememberAsyncImagePainter(model = "data.imageUrl"),
                         contentDescription = data.name,
                         modifier = Modifier
                             .size(48.dp)
@@ -145,7 +104,7 @@ private fun TopAppBar(
                             style = MaterialTheme.typography.headlineSmall,
                         )
                         Text(
-                            text = "${data.currentPrice} $",
+                            text = "${"data.currentPrice"} $",
                             style = MaterialTheme.typography.bodyLarge,
                         )
                     }
@@ -218,7 +177,6 @@ private fun CoinDetailScreenPrev(
     CoinNewsTheme {
         CoinDetailScreen(
             marketDetailState = marketDetailState,
-            onFavoriteClick = {},
         )
     }
 }
