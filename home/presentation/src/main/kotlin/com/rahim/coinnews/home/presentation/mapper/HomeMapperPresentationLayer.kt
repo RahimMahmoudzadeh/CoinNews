@@ -9,6 +9,7 @@ fun MarketDomain.toMarketPresentationLayer(): MarketPresentationLayer =
         name = this.name,
         symbol = this.symbol,
         currentPrice = this.currentPrice,
+        isFavorite = this.isFavorite,
         priceChangePercentage24h = this.priceChangePercentage24h,
         imageUrl = this.imageUrl
     )

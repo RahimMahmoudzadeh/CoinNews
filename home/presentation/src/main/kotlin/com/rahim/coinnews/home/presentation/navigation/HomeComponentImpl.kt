@@ -71,10 +71,12 @@ class HomeComponentImpl(
 
     private suspend fun saveFavorite(marketModel: MarketPresentationLayer) {
         saveFavoriteUseCase(marketModel.toMarketDomain())
+        getMarketList()
     }
 
     private suspend fun deleteFavorite(marketModel: MarketPresentationLayer) {
         deleteFavoriteUseCase(market = marketModel.toMarketDomain())
+        getMarketList()
     }
 
     private fun getMarketList() {

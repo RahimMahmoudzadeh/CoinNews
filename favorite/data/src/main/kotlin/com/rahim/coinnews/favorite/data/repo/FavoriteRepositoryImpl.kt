@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.map
 
 class FavoriteRepositoryImpl(private val favoriteDao: FavoriteDao) : FavoriteRepository {
     override fun getFavoriteMarketList(): Flow<List<MarketDomain>> =
-        favoriteDao.getFavoriteMarketList()
+        favoriteDao.getFavoriteMarketsStream()
             .map { favoritesEntity -> favoritesEntity.map { favoriteEntity -> favoriteEntity.toMarketDomain() } }
 
     override suspend fun saveFavoriteMarket(marketDomain: MarketDomain) {

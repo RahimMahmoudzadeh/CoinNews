@@ -8,6 +8,6 @@ import kotlinx.collections.immutable.PersistentList
 import kotlinx.coroutines.flow.Flow
 
 class GetMarketsUseCase(private val homeRepository: HomeRepository) {
-    operator fun invoke(): Flow<Resource<PersistentList<MarketDomain>, Errors>> =
+    operator fun invoke(): Flow<Resource<List<MarketDomain>, Errors>> =
         homeRepository.getMarkets()
 }

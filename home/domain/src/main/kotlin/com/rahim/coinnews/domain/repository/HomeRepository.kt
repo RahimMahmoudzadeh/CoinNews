@@ -7,7 +7,7 @@ import kotlinx.collections.immutable.PersistentList
 import kotlinx.coroutines.flow.Flow
 
 interface HomeRepository {
-    fun getMarkets(): Flow<Resource<PersistentList<MarketDomain>, Errors>>
+    fun getMarkets(): Flow<Resource<List<MarketDomain>, Errors>>
     suspend fun saveFavoriteMarket(marketDomain: MarketDomain)
     suspend fun deleteFavoriteMarket(marketDomain: MarketDomain)
 }

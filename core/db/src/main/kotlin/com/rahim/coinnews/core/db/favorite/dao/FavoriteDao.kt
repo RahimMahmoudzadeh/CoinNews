@@ -13,7 +13,10 @@ interface FavoriteDao {
     suspend fun insertMarket(marketEntity: FavoriteEntity)
 
     @Query("SELECT * FROM favorite_table")
-    fun getFavoriteMarketList(): Flow<List<FavoriteEntity>>
+    fun getFavoriteMarketsStream(): Flow<List<FavoriteEntity>>
+
+    @Query("SELECT * FROM favorite_table")
+    suspend fun getFavoriteMarkets(): List<FavoriteEntity>
 
     @Delete
     suspend fun delete(favoriteEntity: FavoriteEntity)
