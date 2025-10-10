@@ -38,21 +38,8 @@ class CoinNewsApplicationConventionPlugin : Plugin<Project> {
                     .forEach { add("implementation", project(it.path)) }
                 subprojects.filter { it.path.startsWith(":coindetail:", false) }
                     .forEach { add("implementation", project(it.path)) }
-                subprojects.filter { it.path.startsWith(":register:", false) }
+                subprojects.filter { it.path.startsWith(":favorite:", false) }
                     .forEach { add("implementation", project(it.path)) }
-                subprojects.filter { it.path.startsWith(":invoice:", false) }
-                    .forEach { add("implementation", project(it.path)) }
-                subprojects.filter { it.path.startsWith(":ticket:", false) }
-                    .forEach { add("implementation", project(it.path)) }
-                subprojects.filter { it.path.startsWith(":itemManagement:", false) }
-                    .forEach { add("implementation", project(it.path)) }
-                subprojects.filter { it.path.startsWith(":ticket:", false) }
-                    .forEach { add("implementation", project(it.path)) }
-                subprojects.filter { it.path.startsWith(":customers:", false) }
-                    .forEach { add("implementation", project(it.path)) }
-                subprojects.filter { it.path.startsWith(":shoppingCart:", false) }
-                    .forEach { add("implementation", project(it.path)) }
-
                 subprojects.filter { it.path.startsWith(":core:", false) }
                     .forEach { add("implementation", project(it.path)) }
 
