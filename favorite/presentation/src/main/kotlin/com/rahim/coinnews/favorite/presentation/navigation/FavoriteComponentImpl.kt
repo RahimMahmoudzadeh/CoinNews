@@ -3,8 +3,9 @@ package com.rahim.coinnews.favorite.presentation.navigation
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.value.MutableValue
 import com.arkivanov.decompose.value.Value
+import kotlin.coroutines.CoroutineContext
 
-class FavoriteComponentImpl(componentContext: ComponentContext) : FavoriteComponent,
+class FavoriteComponentImpl(mainContext: CoroutineContext, componentContext: ComponentContext) : FavoriteComponent,
     ComponentContext by componentContext {
 
     private val _state = MutableValue(FavoriteComponent.State())

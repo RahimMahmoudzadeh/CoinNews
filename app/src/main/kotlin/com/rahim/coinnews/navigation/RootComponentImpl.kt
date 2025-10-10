@@ -14,6 +14,8 @@ import com.rahim.coinnews.coindetail.domain.useCase.GetMarketDetailUseCase
 import com.rahim.coinnews.coindetail.presentation.navigation.CoinDetailComponent
 import com.rahim.coinnews.coindetail.presentation.navigation.CoinDetailComponentImpl
 import com.rahim.coinnews.domain.useCase.GetMarketsUseCase
+import com.rahim.coinnews.favorite.presentation.navigation.FavoriteComponent
+import com.rahim.coinnews.favorite.presentation.navigation.FavoriteComponentImpl
 import com.rahim.coinnews.library.navigation.config.ConfigChildComponent
 import com.rahim.coinnews.navigation.RootComponent.ChildStack.*
 import com.rahim.coinnews.home.presentation.navigation.HomeComponent
@@ -36,7 +38,7 @@ class RootComponentImpl(componentContext: ComponentContext) : RootComponent,
             )
         )
 
-        ConfigChildComponent.Favorites -> TODO()
+        ConfigChildComponent.Favorites -> FavoriteChildStack(favoriteComponent(componentContext = childComponentContext))
         is ConfigChildComponent.Detail -> CoinDetailChildStack(
             coinDetailComponent(componentContext = childComponentContext, coinId = config.coinId)
         )
@@ -66,13 +68,22 @@ class RootComponentImpl(componentContext: ComponentContext) : RootComponent,
     private val getMarketChartUseCase: GetMarketChartUseCase = get()
     private val getMarketDetailUseCase: GetMarketDetailUseCase = get()
 
-    private fun coinDetailComponent(componentContext: ComponentContext,coinId: String): CoinDetailComponent =
+    private fun coinDetailComponent(
+        componentContext: ComponentContext,
+        coinId: String
+    ): CoinDetailComponent =
         CoinDetailComponentImpl(
             componentContext = componentContext,
             mainContext = Dispatchers.Main,
             getMarketChartUseCase = getMarketChartUseCase,
             getMarketDetailUseCase = getMarketDetailUseCase,
             coinId = coinId
+        )
+
+    private fun favoriteComponent(componentContext: ComponentContext): FavoriteComponent =
+        FavoriteComponentImpl(
+            componentContext = componentContext,
+            mainContext = Dispatchers.Main,
         )
 
     override fun onTabClick(tab: ConfigChildComponent) {

@@ -9,8 +9,9 @@ import com.arkivanov.decompose.extensions.compose.stack.Children
 import com.arkivanov.decompose.extensions.compose.stack.animation.fade
 import com.arkivanov.decompose.extensions.compose.stack.animation.stackAnimation
 import com.rahim.coinnews.coindetail.presentation.CoinDetailRoute
-import com.rahim.coinnews.navigation.RootComponent
+import com.rahim.coinnews.favorite.presentation.FavoriteRoot
 import com.rahim.coinnews.home.presentation.HomeScreenRoute
+import com.rahim.coinnews.navigation.RootComponent
 
 @Composable
 internal fun RootContent(modifier: Modifier = Modifier, component: RootComponent) {
@@ -23,6 +24,7 @@ internal fun RootContent(modifier: Modifier = Modifier, component: RootComponent
             when (val child = it.instance) {
                 is RootComponent.ChildStack.HomeChildStack -> HomeScreenRoute(component = child.homeComponent)
                 is RootComponent.ChildStack.CoinDetailChildStack -> CoinDetailRoute(component = child.coinDetailComponent)
+                is RootComponent.ChildStack.FavoriteChildStack -> FavoriteRoot(component = child.favoriteComponent)
             }
         }
     }
