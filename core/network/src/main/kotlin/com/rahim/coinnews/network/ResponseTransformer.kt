@@ -1,5 +1,3 @@
-@file:Suppress("ktlint")
-
 package com.rahim.coinnews.network
 
 import kotlin.contracts.ExperimentalContracts
